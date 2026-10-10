@@ -2,7 +2,7 @@
 <html lang="vi">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Phòng Luyện IC3 GS6</title>
+<title>IC3 GS6 Spark Level 2</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
@@ -17,37 +17,12 @@
   --mute-btn:#68777f; --mute-btn-fg:#ffffff;
   --ok:#1d7f46; --ok-soft:#dbf1e3; --bad:#bf3329; --bad-soft:#f8dfdc; --warn:#b06f12; --warn-soft:#fbedd3;
   --scrim:rgba(14,28,37,.48);
-  --hw-body:#e3e8eb; --hw-edge:#b6c1c7; --hw-metal:#9aa5ad; --hw-port:#22292e; --hw-gold:#c9a24a; --hw-blue:#2f7fd8; --hw-ink:#28343b; --hw-field:#f7f9fa;
+  --hw-body:#e3e8eb; --hw-edge:#b6c1c7; --hw-metal:#9aa5ad; --hw-port:#22292e; --hw-gold:#c9a24a; --hw-blue:#2f7fd8; --hw-ink:#28343b; --hw-field:#f7f9fa; --hw-btn-fg:#ffffff;
   --f-display:"Be Vietnam Pro","Segoe UI",system-ui,sans-serif;
   --f-body:"Be Vietnam Pro","Segoe UI",system-ui,sans-serif;
   --f-mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
   --qs:1;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#0e161b; --paper:#152129; --ink:#e2ebef; --muted:#97a8b1; --line:#283842; --line-strong:#475a65;
-    --bar:#0b2532; --bar-fg:#e6f1f5; --bar-icon:#8fd0dc; --bar-line:rgba(255,255,255,.22); --bar-warn:#ffcf70;
-    --accent:#3cb3c3; --accent-fg:#04232a; --accent-soft:#123a41;
-    --chip:#22323b; --chip-hover:#2c3f49; --sel:#3cb3c3; --sel-fg:#04232a;
-    --target:#1e4a5f; --target-fg:#eaf5f9;
-    --mute-btn:#3a4a53; --mute-btn-fg:#e2ebef;
-    --ok:#4cc27e; --ok-soft:#12321f; --bad:#ef6b62; --bad-soft:#3b1815; --warn:#e3a94a; --warn-soft:#3a2a10;
-    --scrim:rgba(0,0,0,.62);
-    --hw-body:#2a363d; --hw-edge:#3d4c55; --hw-metal:#7d8a92; --hw-port:#0a0e11; --hw-gold:#b8933f; --hw-blue:#3b8de6; --hw-ink:#dbe5ea; --hw-field:#1b262c;
-    color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#0e161b; --paper:#152129; --ink:#e2ebef; --muted:#97a8b1; --line:#283842; --line-strong:#475a65;
-  --bar:#0b2532; --bar-fg:#e6f1f5; --bar-icon:#8fd0dc; --bar-line:rgba(255,255,255,.22); --bar-warn:#ffcf70;
-  --accent:#3cb3c3; --accent-fg:#04232a; --accent-soft:#123a41;
-  --chip:#22323b; --chip-hover:#2c3f49; --sel:#3cb3c3; --sel-fg:#04232a;
-  --target:#1e4a5f; --target-fg:#eaf5f9;
-  --mute-btn:#3a4a53; --mute-btn-fg:#e2ebef;
-  --ok:#4cc27e; --ok-soft:#12321f; --bad:#ef6b62; --bad-soft:#3b1815; --warn:#e3a94a; --warn-soft:#3a2a10;
-  --scrim:rgba(0,0,0,.62);
-  --hw-body:#2a363d; --hw-edge:#3d4c55; --hw-metal:#7d8a92; --hw-port:#0a0e11; --hw-gold:#b8933f; --hw-blue:#3b8de6; --hw-ink:#dbe5ea; --hw-field:#1b262c;
-  color-scheme:dark;
+  color-scheme:light;
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -168,6 +143,9 @@ h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
 .hw-fill{fill:var(--hw-ink)}
 .hw-ico{fill:none;stroke:var(--hw-ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .hw-text{fill:var(--hw-ink);font-family:var(--f-body);font-size:13px}
+.hw-ibtn{fill:var(--hw-body);stroke:var(--hw-edge)}
+.hw-btn-text{fill:var(--hw-btn-fg);font-family:var(--f-body);font-weight:600;font-size:14px;text-anchor:middle}
+.hw-big{fill:var(--hw-ink);font-family:var(--f-body);font-size:19px;text-anchor:middle}
 .hw-label{fill:var(--bad);font-family:var(--f-body);font-weight:700;font-size:22px;text-anchor:middle}
 
 .note{max-width:820px;margin:0 auto 18px;padding:10px 14px;background:var(--warn-soft);color:var(--ink);border:1px solid var(--warn);font-size:14px}
@@ -292,7 +270,8 @@ h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
 <section id="exam" class="exam" hidden>
   <div class="titlebar">
     <button class="tb-btn" id="bHome" type="button">← Trang chủ</button>
-    <span class="brand">Phòng Luyện IC3 GS6</span>
+    <span class="brand">IC3 GS6 Spark · Level 2</span>
+    <span class="mode" id="candName"></span>
     <span class="mode" id="modeLabel">Thi thử</span>
     <span class="tb-time" id="timer" aria-live="off">50:00</span>
   </div>
@@ -343,249 +322,328 @@ h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
 
 <script>
 /* =====================================================================
-   NGÂN HÀNG CÂU HỎI — IC3 GS6 Level 2 (7 lĩnh vực)
+   NGÂN HÀNG 100 CÂU HỎI — IC3 GS6 Spark Level 2 (7 lĩnh vực GS6)
    Dạng câu: single | multi | yesno | match (ghép cặp / sắp xếp) | hotspot
    Muốn thêm câu: chép một khối {...} cùng dạng và sửa nội dung.
    ===================================================================== */
 const DOMAINS=['Cơ bản về công nghệ','Công dân số','Quản lý thông tin','Tạo nội dung','Giao tiếp','Cộng tác','An toàn & bảo mật'];
-const STEPS4=['Bước 1','Bước 2','Bước 3','Bước 4'];
-
 const BANK=[
-/* ---------- 0. CƠ BẢN VỀ CÔNG NGHỆ ---------- */
+/* ======================= 1. CƠ BẢN VỀ CÔNG NGHỆ (16) ======================= */
 {d:0,t:'match',q:'Ghép mỗi thuật ngữ về hệ điều hành với mô tả phù hợp.',
  items:['Driver','Daemon','Mã nguồn mở (Open Source)','Khởi động (Boot)','Access Token','Firmware'],
- targets:['Phần mềm công khai mã nguồn; bất kỳ ai cũng có thể xem, chỉnh sửa và phân phối lại.','Quá trình bật máy: phần cứng được kiểm tra, hệ điều hành và các trình điều khiển được nạp vào bộ nhớ.','Chương trình nhỏ giúp hệ điều hành giao tiếp và điều khiển một thiết bị phần cứng cụ thể.','Tiến trình chạy ngầm, khởi động cùng hệ thống và cung cấp dịch vụ liên tục để hỗ trợ đa nhiệm.'],
+ targets:['Phần mềm công khai mã nguồn; bất kỳ ai cũng có thể xem, sửa đổi và chia sẻ miễn phí.','Quá trình bật máy: phần cứng được kiểm tra, hệ điều hành và các trình điều khiển được nạp vào bộ nhớ.','Chương trình nhỏ giúp hệ điều hành giao tiếp và điều khiển một thiết bị phần cứng.','Chương trình chạy ngầm, bắt đầu cùng lúc khởi động và hoạt động liên tục để hỗ trợ đa nhiệm.'],
  a:[2,3,0,1],
- e:'Open Source = mã nguồn mở; Boot = khởi động; Driver = trình điều khiển thiết bị; Daemon = tiến trình nền (trên Windows gọi là Service). Access Token là "vé" xác thực một phiên đăng nhập, Firmware là phần mềm nhúng sẵn trong phần cứng, nên không khớp mô tả nào.'},
-{d:0,t:'multi',q:'Máy tính để bàn của bạn chạy chậm khi mở nhiều ứng dụng cùng lúc và mất hơn 2 phút để khởi động. Bạn muốn nâng cấp phần cứng để máy chạy nhanh hơn rõ rệt.\nHai nâng cấp nào hiệu quả nhất?',
+ e:'Open Source = mã nguồn mở; Boot = khởi động; Driver = trình điều khiển thiết bị; Daemon = tiến trình chạy nền. Access Token là "vé" xác nhận bạn đã đăng nhập; Firmware là phần mềm nằm sẵn bên trong phần cứng, nên không khớp mô tả nào.'},
+{d:0,t:'multi',q:'Bạn có một máy tính để bàn và muốn máy chạy nhanh hơn để chơi game mượt hơn. Bạn quyết định nâng cấp phần cứng.\nHai nâng cấp nào giúp máy chạy nhanh hơn?',
  o:['ROM','Ổ cứng HDD dung lượng lớn hơn','Ổ đĩa flash USB','Ổ cứng thể rắn (SSD)','RAM'],a:[3,4],
- e:'RAM là bộ nhớ làm việc: thêm RAM giúp chạy nhiều ứng dụng cùng lúc mượt hơn. SSD đọc/ghi nhanh hơn HDD nhiều lần nên rút ngắn thời gian khởi động và mở phần mềm. ROM không nâng cấp được; USB flash và HDD lớn hơn chỉ tăng dung lượng, không tăng tốc độ.'},
-{d:0,t:'match',img:'ports',q:'Quan sát các cổng kết nối ở cạnh máy tính xách tay. Ghép tên cổng với vị trí tương ứng.',
- items:['VGA','Ethernet (RJ-45)','HDMI','USB 3.0','Jack âm thanh 3.5 mm','DisplayPort','Thunderbolt'],
+ e:'RAM là bộ nhớ làm việc: càng nhiều RAM, máy càng chạy được nhiều chương trình cùng lúc mà không giật. SSD đọc/ghi nhanh hơn HDD rất nhiều nên game và máy khởi động nhanh hơn. ROM không nâng cấp được; USB và HDD lớn hơn chỉ thêm chỗ chứa, không tăng tốc.'},
+{d:0,t:'match',img:'ports',q:'Quan sát hình ảnh để xác định các loại cổng kết nối. Ghép tên với cổng kết nối tương ứng.',
+ items:['VGA (chỉ hình ảnh)','Ethernet','HDMI','USB','Âm thanh (chỉ âm thanh)','DisplayPort'],
  targets:['Cổng A','Cổng B','Cổng C','Cổng D','Cổng E'],a:[0,1,2,3,4],
- e:'A – VGA: hình thang, 15 chân, chỉ truyền hình ảnh analog. B – Ethernet RJ-45: mạng có dây, có khấc giữ đầu cáp. C – HDMI: truyền cả hình ảnh và âm thanh số. D – USB 3.0: nhận biết bằng lõi nhựa màu xanh. E – Jack 3.5 mm: chỉ âm thanh (tai nghe/micro).'},
-{d:0,t:'match',order:true,q:'Sắp xếp các đơn vị lưu trữ dữ liệu theo thứ tự từ NHỎ đến LỚN.',
+ e:'A – VGA: hình thang có 15 lỗ chân, chỉ truyền hình ảnh. B – Ethernet: cắm dây mạng. C – HDMI: truyền cả hình ảnh và âm thanh. D – USB: cắm chuột, bàn phím, USB (lõi xanh là USB 3.0). E – Jack tròn 3.5 mm: chỉ âm thanh (tai nghe, micro).'},
+{d:0,t:'match',order:true,q:'Sắp xếp các đơn vị lưu trữ theo thứ tự từ NHỎ đến LỚN.',
  items:['Kilobyte (KB)','Megabyte (MB)','Gigabyte (GB)','Terabyte (TB)'],targets:['1 – Nhỏ nhất','2','3','4 – Lớn nhất'],a:[0,1,2,3],
- e:'1 KB ≈ 1.024 byte; 1 MB ≈ 1.024 KB; 1 GB ≈ 1.024 MB; 1 TB ≈ 1.024 GB.'},
-{d:0,t:'yesno',q:'Đối với mỗi phát biểu về điện toán đám mây (cloud computing), hãy chọn Yes nếu đúng hoặc No nếu sai.',
- rows:['Dữ liệu lưu trên đám mây có thể truy cập từ nhiều thiết bị có kết nối Internet.','Các ứng dụng như Google Docs, Microsoft 365 bản web chạy trên trình duyệt mà không cần cài đặt.','Lưu trữ đám mây hoạt động hoàn toàn không cần Internet.','Nhà cung cấp dịch vụ đám mây chịu trách nhiệm vận hành và bảo trì máy chủ thay người dùng.'],a:[1,1,0,1],
- e:'Đám mây = tài nguyên (lưu trữ, phần mềm, máy chủ) đặt ở trung tâm dữ liệu của nhà cung cấp, truy cập qua Internet. Không có Internet thì chỉ dùng được bản đã đồng bộ ngoại tuyến (nếu có), không phải "hoàn toàn không cần Internet".'},
-{d:0,t:'single',q:'Bạn vừa kết nối một máy in mới qua cổng USB nhưng máy tính không in được và hiển thị "Thiết bị không xác định". Bạn nên làm gì trước tiên?',
- o:['Cài đặt lại hệ điều hành','Cài đặt hoặc cập nhật driver (trình điều khiển) của máy in','Thay cáp mạng Ethernet','Nâng cấp thêm RAM'],a:1,
- e:'Hệ điều hành cần driver để nhận diện và điều khiển thiết bị. Thông báo "Thiết bị không xác định" gần như luôn là thiếu hoặc lỗi driver. Tải driver từ trang của hãng hoặc dùng Windows Update.'},
-{d:0,t:'multi',q:'Thiết bị nào sau đây là thiết bị đầu vào (input device)?',
- o:['Bàn phím','Máy in','Máy quét (scanner)','Loa','Màn hình không cảm ứng'],a:[0,2],
- e:'Thiết bị đầu vào đưa dữ liệu VÀO máy tính: bàn phím, chuột, máy quét, micro, webcam. Máy in, loa, màn hình thường là thiết bị đầu ra. (Màn hình cảm ứng vừa là đầu vào vừa là đầu ra.)'},
-{d:0,t:'single',q:'Phần mềm nào sau đây là hệ điều hành dành cho thiết bị di động?',
- o:['Microsoft Excel','Google Chrome','Android','Intel Core i5'],a:2,
- e:'Android (Google) và iOS (Apple) là hai hệ điều hành di động phổ biến nhất. Excel là ứng dụng bảng tính, Chrome là trình duyệt, Intel Core i5 là bộ vi xử lý (phần cứng).'},
-{d:0,t:'yesno',q:'Đối với mỗi phát biểu về cập nhật phần mềm, hãy chọn Yes nếu đúng hoặc No nếu sai.',
- rows:['Bản cập nhật phần mềm thường vá các lỗ hổng bảo mật đã bị phát hiện.','Cập nhật hệ điều hành luôn xóa toàn bộ dữ liệu cá nhân.','Nên bật cập nhật tự động cho hệ điều hành và trình duyệt.','Phần mềm đã ngừng hỗ trợ (end of support) vẫn được vá lỗi định kỳ.'],a:[1,0,1,0],
- e:'Cập nhật = vá lỗi + vá bảo mật + tính năng mới; dữ liệu cá nhân được giữ nguyên. Phần mềm hết hỗ trợ (ví dụ Windows 7) không còn nhận bản vá, nên rất dễ bị tấn công.'},
-{d:0,t:'hotspot',svg:'taskbar',q:'Laptop của bạn chưa kết nối mạng. Hãy nhấp vào biểu tượng trên thanh tác vụ (taskbar) để mở danh sách mạng Wi-Fi.',a:5,
- e:'Biểu tượng Wi-Fi (các vòng cung) nằm ở khu vực thông báo góc phải taskbar, cạnh biểu tượng âm lượng và pin. Nhấp vào đó để chọn mạng và nhập mật khẩu.'},
-{d:0,t:'single',q:'Trên Windows 10/11, tổ hợp phím nào mở công cụ chụp một vùng màn hình (Snipping Tool)?',
+ e:'KB < MB < GB < TB. Mỗi đơn vị lớn gấp khoảng 1.024 lần đơn vị liền trước. Một bức ảnh điện thoại khoảng vài MB; một bộ phim khoảng vài GB.'},
+{d:0,t:'single',q:'Bạn muốn kết nối tai nghe không dây với điện thoại để nghe nhạc. Bạn cần bật công nghệ nào?',
+ o:['Bluetooth','Ethernet','HDMI','Chế độ máy bay'],a:0,
+ e:'Bluetooth kết nối không dây ở khoảng cách ngắn (khoảng 10 m) cho tai nghe, loa, chuột, bàn phím. Ethernet và HDMI là kết nối có dây; chế độ máy bay sẽ tắt các kết nối không dây.'},
+{d:0,t:'yesno',q:'Với mỗi phát biểu về điện toán đám mây (cloud), hãy chọn Yes nếu đúng hoặc No nếu sai.',
+ rows:['Tệp lưu trên đám mây có thể mở từ nhiều thiết bị có Internet.','Google Docs và Word bản web chạy trên trình duyệt, không cần cài đặt.','Lưu trữ đám mây hoạt động hoàn toàn không cần Internet.','OneDrive, Google Drive và iCloud là các dịch vụ lưu trữ đám mây.'],a:[1,1,0,1],
+ e:'Đám mây là máy chủ của nhà cung cấp, bạn truy cập qua Internet. Không có Internet thì chỉ mở được những tệp đã tải sẵn về máy.'},
+{d:0,t:'single',q:'Bạn cắm máy in mới vào máy tính bằng cáp USB nhưng máy tính báo "Không nhận ra thiết bị". Bạn nên làm gì trước tiên?',
+ o:['Cài đặt lại hệ điều hành','Cài đặt driver (trình điều khiển) của máy in','Thay cáp mạng','Mua thêm RAM'],a:1,
+ e:'Máy tính cần driver để "hiểu" và điều khiển thiết bị. Tải driver từ trang web của hãng máy in hoặc dùng Windows Update.'},
+{d:0,t:'multi',q:'Thiết bị nào sau đây là thiết bị đầu vào (đưa thông tin VÀO máy tính)?',
+ o:['Bàn phím','Máy in','Micro','Loa','Màn hình thường (không cảm ứng)'],a:[0,2],
+ e:'Thiết bị đầu vào: bàn phím, chuột, micro, webcam, máy quét. Thiết bị đầu ra: máy in, loa, màn hình. Màn hình cảm ứng vừa là đầu vào vừa là đầu ra.'},
+{d:0,t:'hotspot',svg:'taskbar',q:'Laptop của bạn chưa vào được mạng. Nhấp vào biểu tượng trên thanh tác vụ (taskbar) để xem danh sách mạng Wi-Fi.',a:5,
+ e:'Biểu tượng Wi-Fi (các vòng cung) nằm ở góc phải taskbar, cạnh biểu tượng loa và pin.'},
+{d:0,t:'single',q:'Trên Windows, tổ hợp phím nào mở công cụ chụp một vùng màn hình?',
  o:['Ctrl + Alt + Delete','Windows + Shift + S','Alt + F4','Windows + L'],a:1,
- e:'Windows + Shift + S mở công cụ chụp vùng màn hình. Ctrl + Alt + Delete mở màn hình bảo mật, Alt + F4 đóng cửa sổ, Windows + L khóa máy.'},
-{d:0,t:'match',q:'Ghép mỗi phím tắt với chức năng tương ứng.',
- items:['Ctrl + C','Ctrl + V','Ctrl + Z','Ctrl + S','Ctrl + X','Ctrl + A'],targets:['Sao chép (Copy)','Dán (Paste)','Hoàn tác (Undo)','Lưu tệp (Save)'],a:[0,1,2,3],
- e:'Ctrl + C sao chép, Ctrl + V dán, Ctrl + Z hoàn tác, Ctrl + S lưu. Ctrl + X là cắt (Cut), Ctrl + A là chọn tất cả.'},
-{d:0,t:'single',q:'Một trang web đã cập nhật nội dung mới nhưng trình duyệt của bạn vẫn hiển thị nội dung cũ. Bạn nên làm gì?',
- o:['Cài đặt lại hệ điều hành','Xóa bộ nhớ đệm (cache) của trình duyệt rồi tải lại trang','Đổi hình nền máy tính','Tắt tường lửa'],a:1,
- e:'Trình duyệt lưu bản sao trang (cache) để tải nhanh hơn. Khi nội dung cũ vẫn hiện, xóa cache hoặc nhấn Ctrl + F5 để tải lại hoàn toàn.'},
-{d:0,t:'yesno',q:'Đối với mỗi phát biểu về trình duyệt web, hãy chọn Yes nếu đúng hoặc No nếu sai.',
- rows:['Google Chrome, Microsoft Edge và Mozilla Firefox là các trình duyệt web.','Google Search là một trình duyệt web.','Trình duyệt dùng địa chỉ URL để truy cập trang web, hình ảnh và video.','Không có trình duyệt thì máy tính không thể kết nối Internet.'],a:[1,0,1,0],
- e:'Trình duyệt là phần mềm hiển thị nội dung web. Google Search là công cụ tìm kiếm (một website), không phải trình duyệt. Kết nối Internet do card mạng và hệ điều hành đảm nhận; email, ứng dụng, cập nhật vẫn dùng Internet mà không cần trình duyệt.'},
-{d:0,t:'single',q:'Khi bạn gõ một tên miền vào thanh địa chỉ, hệ thống nào chuyển tên miền đó thành địa chỉ IP của máy chủ?',
- o:['DHCP','DNS','HTTP','VPN'],a:1,
- e:'DNS (Domain Name System) là "danh bạ" của Internet, chuyển tên miền dễ nhớ thành địa chỉ IP. DHCP cấp IP cho thiết bị trong mạng, HTTP là giao thức truyền trang web, VPN là mạng riêng ảo.'},
-{d:0,t:'hotspot',svg:'browser',q:'Trang web bị tải lỗi giữa chừng. Hãy nhấp vào nút để tải lại trang.',a:2,
- e:'Nút tải lại (mũi tên vòng tròn) nằm cạnh nút Quay lại/Tiến tới. Phím tắt: F5 hoặc Ctrl + R.'},
+ e:'Windows + Shift + S: chụp vùng màn hình. Ctrl + Alt + Delete: màn hình bảo mật. Alt + F4: đóng cửa sổ. Windows + L: khóa máy.'},
+{d:0,t:'single',q:'Thứ Sáu tuần sau lớp bạn kiểm tra Toán. Bạn muốn điện thoại tự nhắc trước 1 ngày. Cách tốt nhất là gì?',
+ o:['Ghi vào giấy nhớ dán lên bàn','Tạo sự kiện trong ứng dụng Lịch (Calendar) và đặt lời nhắc trước 1 ngày','Chụp màn hình thời khóa biểu','Đặt hình nền điện thoại là chữ "Kiểm tra Toán"'],a:1,
+ e:'Lịch số (Google Calendar, Outlook, Lịch trên điện thoại) cho phép tạo sự kiện, đặt lời nhắc (reminder), lặp lại hằng tuần và chia sẻ cho người khác.'},
+{d:0,t:'single',q:'Một ứng dụng trên máy tính bị "treo", không bấm được gì. Bạn nên làm gì?',
+ o:['Rút điện máy tính ngay lập tức','Mở Task Manager (Ctrl + Shift + Esc), chọn ứng dụng đó rồi bấm End task','Xóa ứng dụng khỏi máy','Đợi đến ngày mai'],a:1,
+ e:'Task Manager cho phép đóng riêng ứng dụng bị treo mà không ảnh hưởng chương trình khác. Rút điện đột ngột có thể làm mất dữ liệu chưa lưu.'},
+{d:0,t:'yesno',q:'Với mỗi phát biểu về trình duyệt web, hãy chọn Yes nếu đúng hoặc No nếu sai.',
+ rows:['Trình duyệt web chính là Internet.','Trình duyệt web là công cụ tìm kiếm (search engine).','Trình duyệt web là ứng dụng lấy và hiển thị thông tin từ World Wide Web.','Trình duyệt dùng URL để mở trang web, hình ảnh và video.'],a:[0,0,1,1],
+ e:'Trình duyệt (Chrome, Edge, Firefox, Safari) là phần mềm. Internet là mạng lưới kết nối toàn cầu. Google, Bing là công cụ tìm kiếm, tức là các trang web chạy bên trong trình duyệt.'},
+{d:0,t:'single',q:'Bạn muốn cập nhật các ứng dụng trên điện thoại Android lên phiên bản mới nhất. Bạn vào đâu?',
+ o:['Ứng dụng Máy ảnh','Cửa hàng Google Play','Ứng dụng Danh bạ','Cài đặt hình nền'],a:1,
+ e:'Ứng dụng trên Android được cập nhật qua Google Play; trên iPhone/iPad qua App Store. Nên bật cập nhật tự động để nhận bản vá bảo mật.'},
+{d:0,t:'hotspot',svg:'browser',q:'Trang web bị tải lỗi giữa chừng. Nhấp vào nút để tải lại trang.',a:2,
+ e:'Nút tải lại (mũi tên vòng tròn) nằm cạnh nút Quay lại và Tiến tới. Phím tắt: F5.'},
+{d:0,t:'single',q:'Khi bật Chế độ máy bay (Airplane mode) trên điện thoại, điều gì xảy ra?',
+ o:['Điện thoại tắt nguồn','Các kết nối không dây (mạng di động, Wi-Fi, Bluetooth) bị tắt','Tất cả ứng dụng bị xóa','Pin được sạc nhanh hơn gấp đôi'],a:1,
+ e:'Chế độ máy bay tắt sóng điện thoại và kết nối không dây. Bạn vẫn dùng được ứng dụng ngoại tuyến (ảnh, nhạc đã tải). Có thể bật lại riêng Wi-Fi/Bluetooth nếu cần.'},
 
-/* ---------- 1. CÔNG DÂN SỐ ---------- */
-{d:1,t:'single',q:'Bạn tìm được một bức ảnh gắn giấy phép Creative Commons BY-NC. Bạn được phép sử dụng ảnh này như thế nào?',
- o:['Dùng cho mọi mục đích, không cần ghi nguồn','Dùng cho mục đích phi thương mại và phải ghi công tác giả','Chỉ được xem, không được tải về','In lên sản phẩm để bán, miễn là ghi tên tác giả'],a:1,
- e:'BY = phải ghi công tác giả (Attribution); NC = phi thương mại (Non-Commercial). In lên sản phẩm để bán là mục đích thương mại nên vi phạm giấy phép.'},
-{d:1,t:'yesno',q:'Đối với mỗi phát biểu về bản quyền, hãy chọn Yes nếu đúng hoặc No nếu sai.',
- rows:['Hình ảnh tìm thấy trên Google đều được tự do sử dụng vì đã công khai trên mạng.','Ghi nguồn tác giả không thay thế cho việc xin phép khi tác phẩm còn được bảo hộ bản quyền.','Tác phẩm thuộc phạm vi công cộng (Public Domain) có thể dùng mà không cần xin phép.','Sao chép phần mềm có bản quyền để bán lại là vi phạm pháp luật.'],a:[0,1,1,1],
- e:'"Công khai trên mạng" không có nghĩa là "miễn phí sử dụng". Tác phẩm vẫn được bảo hộ trừ khi tác giả cấp phép (ví dụ Creative Commons) hoặc đã thuộc Public Domain.'},
-{d:1,t:'multi',q:'Ba hành vi nào thể hiện một công dân số có trách nhiệm?',
- o:['Kiểm chứng thông tin từ nguồn đáng tin trước khi chia sẻ','Đăng ảnh bạn bè lên mạng xã hội mà không hỏi ý kiến','Tôn trọng quan điểm khác biệt khi tranh luận trực tuyến','Bảo vệ thông tin cá nhân của mình và của người khác','Chia sẻ ngay tin "nóng" để mọi người biết sớm'],a:[0,2,3],
- e:'Công dân số có trách nhiệm: kiểm chứng trước khi chia sẻ, tôn trọng người khác, bảo vệ quyền riêng tư. Đăng ảnh người khác khi chưa xin phép và lan truyền tin chưa kiểm chứng đều có thể gây hại.'},
-{d:1,t:'single',q:'Thuật ngữ "dấu chân số" (digital footprint) chỉ điều gì?',
- o:['Dấu vân tay dùng để mở khóa điện thoại','Toàn bộ dấu vết dữ liệu bạn để lại khi hoạt động trực tuyến: bài đăng, bình luận, lịch sử tìm kiếm, ảnh...','Số bước chân do ứng dụng sức khỏe ghi nhận','Dung lượng ổ cứng mà hệ điều hành chiếm dụng'],a:1,
- e:'Dấu chân số tồn tại lâu dài và có thể được nhà tuyển dụng, đối tác tra cứu. Hãy cân nhắc trước khi đăng bất cứ điều gì.'},
-{d:1,t:'single',q:'Một bạn cùng lớp liên tục gửi tin nhắn xúc phạm bạn qua mạng xã hội. Cách xử lý phù hợp nhất là gì?',
- o:['Trả lời bằng lời lẽ tương tự','Xóa hết tin nhắn để quên đi','Không phản hồi, chụp màn hình lưu bằng chứng, chặn và báo cáo với nền tảng hoặc người có trách nhiệm','Đăng công khai thông tin cá nhân của người đó'],a:2,
- e:'Với bắt nạt trực tuyến (cyberbullying): không trả đũa, lưu bằng chứng, chặn, báo cáo cho nền tảng và người có thẩm quyền (giáo viên, phụ huynh, quản lý). Xóa tin nhắn làm mất bằng chứng.'},
-{d:1,t:'match',q:'Ghép mỗi khái niệm về quyền sử dụng tác phẩm với mô tả phù hợp.',
+/* ======================= 2. CÔNG DÂN SỐ (13) ======================= */
+{d:1,t:'single',q:'Bạn tìm thấy một bức ảnh có giấy phép Creative Commons BY-NC. Bạn được dùng ảnh này như thế nào?',
+ o:['Dùng cho mọi mục đích, không cần ghi tên tác giả','Dùng cho bài tập ở trường (không bán) và ghi tên tác giả','Chỉ được xem, không được tải về','In lên áo để bán, miễn là ghi tên tác giả'],a:1,
+ e:'BY = phải ghi tên tác giả; NC = không dùng để kiếm tiền. Bài tập ở trường là phi thương mại nên được dùng, nhưng phải ghi nguồn.'},
+{d:1,t:'yesno',q:'Với mỗi phát biểu về bản quyền, hãy chọn Yes nếu đúng hoặc No nếu sai.',
+ rows:['Ảnh tìm thấy trên Google đều được tự do sử dụng.','Bài hát, phim, truyện tranh đều có thể được bảo vệ bản quyền.','Tác phẩm thuộc phạm vi công cộng (Public Domain) được dùng mà không cần xin phép.','Ghi tên tác giả luôn đủ để dùng bất kỳ tác phẩm nào.'],a:[0,1,1,0],
+ e:'Có trên mạng không có nghĩa là miễn phí. Với tác phẩm còn bản quyền, cần giấy phép (như Creative Commons) hoặc xin phép tác giả; ghi tên thôi là chưa đủ.'},
+{d:1,t:'multi',q:'Ba hành vi nào thể hiện một công dân số tốt?',
+ o:['Kiểm tra thông tin trước khi chia sẻ','Đăng ảnh bạn bè mà không hỏi ý kiến','Lịch sự, tôn trọng khi bình luận','Giữ bí mật mật khẩu và thông tin cá nhân của người khác','Chia sẻ ngay tin giật gân để mọi người biết'],a:[0,2,3],
+ e:'Công dân số tốt: kiểm chứng trước khi chia sẻ, cư xử lịch sự, tôn trọng quyền riêng tư của mình và người khác.'},
+{d:1,t:'single',q:'"Dấu chân số" (digital footprint) là gì?',
+ o:['Dấu vân tay dùng để mở khóa điện thoại','Tất cả dấu vết bạn để lại trên mạng: bài đăng, bình luận, ảnh, lịch sử tìm kiếm','Số bước chân ứng dụng sức khỏe đếm được','Dung lượng còn trống trên ổ cứng'],a:1,
+ e:'Dấu chân số có thể tồn tại rất lâu và người khác có thể tìm thấy. Hãy suy nghĩ kỹ trước khi đăng.'},
+{d:1,t:'single',q:'Một bạn liên tục nhắn tin chế giễu bạn trên mạng xã hội. Bạn nên làm gì?',
+ o:['Nhắn lại những lời tương tự','Xóa hết tin nhắn để quên đi','Không trả lời, chụp màn hình làm bằng chứng, chặn và báo cho thầy cô hoặc bố mẹ','Đăng ảnh của bạn đó lên mạng để trả đũa'],a:2,
+ e:'Khi bị bắt nạt trên mạng: không đáp trả, lưu bằng chứng, chặn, báo cáo cho nền tảng và người lớn tin cậy. Xóa tin nhắn sẽ làm mất bằng chứng.'},
+{d:1,t:'match',q:'Ghép mỗi khái niệm với mô tả phù hợp.',
  items:['Bản quyền (Copyright ©)','Phạm vi công cộng (Public Domain)','Creative Commons','Sử dụng hợp lý (Fair Use)','Nhãn hiệu (Trademark ™)'],
- targets:['Tác giả giữ toàn quyền; người khác phải xin phép mới được sử dụng.','Tác phẩm đã hết thời hạn bảo hộ hoặc được từ bỏ quyền; ai cũng được dùng tự do.','Tác giả cho phép sử dụng theo các điều kiện công bố sẵn (ghi công, phi thương mại...).','Trích dẫn một phần nhỏ cho mục đích giáo dục, bình luận, tin tức mà không cần xin phép.'],a:[0,1,2,3],
- e:'Trademark bảo hộ tên, logo thương hiệu, không phải quyền sử dụng tác phẩm nói chung, nên là đáp án nhiễu.'},
-{d:1,t:'yesno',q:'Đối với mỗi phát biểu về quy tắc ứng xử trên mạng (netiquette), hãy chọn Yes nếu đúng hoặc No nếu sai.',
- rows:['Viết TOÀN BỘ BẰNG CHỮ IN HOA thường bị hiểu là đang la hét.','Trong nhóm chat công việc, nên chuyển tiếp tin đồn chưa kiểm chứng để mọi người cảnh giác.','Trước khi đăng ảnh có người khác, nên xin phép họ.','Bình luận ẩn danh thì không cần tuân thủ quy tắc ứng xử.'],a:[1,0,1,0],
- e:'Netiquette áp dụng cho mọi hình thức giao tiếp trực tuyến, kể cả khi ẩn danh. Tin đồn chưa kiểm chứng gây nhiễu thông tin và có thể gây hại.'},
-{d:1,t:'single',q:'Bạn đăng hình ảnh lên website của lớp. Việc nào giúp người khiếm thị dùng trình đọc màn hình hiểu được nội dung ảnh?',
- o:['Tăng độ phân giải ảnh','Thêm văn bản thay thế (Alt Text) mô tả nội dung ảnh','Đổi định dạng ảnh sang GIF','Đặt ảnh làm hình nền trang'],a:1,
- e:'Alt Text được trình đọc màn hình đọc to lên, là yêu cầu cơ bản về khả năng tiếp cận (accessibility). Word, PowerPoint, Facebook... đều có ô nhập Alt Text.'},
+ targets:['Tác giả giữ mọi quyền; muốn dùng phải xin phép.','Tác phẩm hết thời hạn bảo hộ; ai cũng dùng được tự do.','Tác giả cho phép dùng theo điều kiện ghi sẵn (ghi tên, không bán...).','Trích một phần nhỏ cho học tập, bình luận mà không cần xin phép.'],a:[0,1,2,3],
+ e:'Nhãn hiệu (Trademark) bảo vệ tên và logo của thương hiệu, không phải quyền sử dụng tác phẩm, nên là đáp án nhiễu.'},
+{d:1,t:'yesno',q:'Với mỗi phát biểu về cách cư xử trên mạng (netiquette), hãy chọn Yes nếu đúng hoặc No nếu sai.',
+ rows:['VIẾT TOÀN CHỮ IN HOA thường bị hiểu là đang hét.','Nên chuyển tiếp tin đồn chưa rõ thật giả vào nhóm lớp.','Nên hỏi ý kiến trước khi đăng ảnh có mặt người khác.','Bình luận ẩn danh thì không cần lịch sự.'],a:[1,0,1,0],
+ e:'Quy tắc ứng xử áp dụng cho mọi nơi trên mạng, kể cả khi ẩn danh. Tin đồn chưa kiểm chứng có thể làm tổn thương người khác.'},
+{d:1,t:'single',q:'Bạn đăng ảnh lên trang web của lớp. Việc nào giúp người khiếm thị dùng trình đọc màn hình hiểu nội dung ảnh?',
+ o:['Tăng độ sáng ảnh','Thêm văn bản thay thế (Alt Text) mô tả ảnh','Đổi ảnh sang định dạng GIF','Đặt ảnh làm hình nền'],a:1,
+ e:'Trình đọc màn hình sẽ đọc to phần Alt Text. Word, PowerPoint và mạng xã hội đều có ô nhập Alt Text cho ảnh.'},
+{d:1,t:'single',q:'Bạn học online và chơi game nhiều giờ liền nên bị mỏi mắt. Thói quen nào giúp bảo vệ mắt?',
+ o:['Tăng độ sáng màn hình tối đa','Quy tắc 20-20-20: cứ 20 phút, nhìn xa khoảng 6 mét trong 20 giây','Ngồi thật gần màn hình','Dùng thiết bị trong phòng tối'],a:1,
+ e:'Quy tắc 20-20-20 giúp mắt nghỉ. Ngoài ra nên ngồi cách màn hình 50–70 cm, đủ ánh sáng và đứng dậy vận động sau mỗi giờ.'},
+{d:1,t:'multi',q:'Hai cách nào giúp bạn tự kiểm soát thời gian dùng thiết bị số?',
+ o:['Dùng tính năng Screen Time / Digital Wellbeing để đặt giới hạn thời gian','Bật chế độ Không làm phiền khi học bài','Mang điện thoại lên giường để lướt trước khi ngủ','Bật thông báo của mọi ứng dụng','Chơi game liên tục cho đến khi hết pin'],a:[0,1],
+ e:'Screen Time (iPhone) và Digital Wellbeing (Android) cho biết bạn dùng ứng dụng bao lâu và cho phép đặt giới hạn. Chế độ Không làm phiền giúp tập trung.'},
+{d:1,t:'single',q:'Bạn làm video giới thiệu trường để đăng lên YouTube. Bạn nên chọn nhạc nền như thế nào?',
+ o:['Dùng bài hát nổi tiếng đang thịnh hành','Dùng nhạc miễn phí bản quyền, ví dụ từ Thư viện âm thanh của YouTube','Tải nhạc từ một trang web bất kỳ','Thu âm lại bài hát nổi tiếng từ loa'],a:1,
+ e:'Dùng nhạc có bản quyền mà không xin phép có thể khiến video bị gỡ hoặc tắt tiếng. Thư viện âm thanh YouTube cung cấp nhạc được phép sử dụng.'},
+{d:1,t:'single',q:'Hành động nào sau đây là đạo văn (plagiarism)?',
+ o:['Trích một câu trong sách và ghi rõ tên sách, tác giả','Chép nguyên bài viết trên mạng rồi nộp như bài của mình','Đọc nhiều nguồn rồi tự viết lại theo ý hiểu và ghi nguồn','Hỏi thầy cô cách trích dẫn'],a:1,
+ e:'Đạo văn là lấy ý tưởng hoặc câu chữ của người khác mà nhận là của mình. Luôn ghi nguồn khi dùng thông tin của người khác.'},
+{d:1,t:'match',q:'Ghép mỗi tính năng hỗ trợ tiếp cận (accessibility) với người dùng được hỗ trợ.',
+ items:['Trình đọc màn hình (Narrator)','Phụ đề (Captions)','Kính lúp (Magnifier)','Nhập liệu bằng giọng nói','Chế độ máy bay'],
+ targets:['Người khiếm thị: nghe máy tính đọc nội dung trên màn hình','Người khiếm thính: đọc lời thoại khi xem video','Người nhìn kém: phóng to một phần màn hình','Người khó dùng bàn phím: nói để máy tính gõ chữ'],a:[0,1,2,3],
+ e:'Windows: Settings > Accessibility. Chế độ máy bay không phải tính năng hỗ trợ tiếp cận.'},
 
-/* ---------- 2. QUẢN LÝ THÔNG TIN ---------- */
-{d:2,t:'single',q:'Bạn muốn Google chỉ trả về các trang chứa CHÍNH XÁC cụm từ kỹ năng số cơ bản. Bạn nên nhập từ khóa như thế nào?',
- o:['kỹ năng số cơ bản','"kỹ năng số cơ bản"','kỹ năng + số + cơ bản','#kỹ năng số cơ bản'],a:1,
- e:'Đặt cụm từ trong ngoặc kép để tìm chính xác cụm từ theo đúng thứ tự.'},
-{d:2,t:'match',q:'Ghép mỗi toán tử tìm kiếm với công dụng của nó.',
+/* ======================= 3. QUẢN LÝ THÔNG TIN (14) ======================= */
+{d:2,t:'single',q:'Bạn muốn Google chỉ tìm các trang có CHÍNH XÁC cụm từ hệ mặt trời. Bạn gõ từ khóa thế nào?',
+ o:['hệ mặt trời','"hệ mặt trời"','hệ + mặt + trời','#hệ mặt trời'],a:1,
+ e:'Đặt cụm từ trong dấu ngoặc kép để tìm chính xác cụm từ đó theo đúng thứ tự.'},
+{d:2,t:'match',q:'Ghép mỗi cách tìm kiếm với công dụng của nó.',
  items:['"..." (ngoặc kép)','- (dấu trừ)','site:','filetype:','OR','* (dấu sao)'],
- targets:['Tìm chính xác cả cụm từ','Loại bỏ kết quả chứa từ đứng ngay sau','Chỉ tìm trong một website hoặc tên miền','Chỉ tìm tệp theo định dạng (pdf, docx...)'],a:[0,1,2,3],
- e:'Ví dụ: "an toàn thông tin" site:gov.vn filetype:pdf -tuyển dụng. OR tìm một trong hai từ, * là ký tự đại diện cho từ bất kỳ.'},
-{d:2,t:'multi',q:'Bạn đang tìm tài liệu cho bài thuyết trình. Ba tiêu chí nào giúp đánh giá độ tin cậy của một trang web?',
- o:['Tác giả hoặc tổ chức rõ ràng, có chuyên môn','Trang có nhiều quảng cáo và cửa sổ bật lên','Thông tin được cập nhật gần đây, có ngày đăng','Có trích dẫn nguồn và có thể đối chiếu với nguồn khác','Trang xuất hiện đầu tiên trong kết quả tìm kiếm'],a:[0,2,3],
- e:'Tiêu chí đánh giá nguồn: Tác giả – Tính cập nhật – Bằng chứng/trích dẫn – Mục đích. Vị trí trên Google phụ thuộc SEO và quảng cáo, không chứng minh độ chính xác.'},
-{d:2,t:'single',q:'Bạn cần thông tin chính thống về quy định pháp luật. Trang web có tên miền nào sau đây nhiều khả năng thuộc cơ quan nhà nước Việt Nam?',
- o:['.com.vn','.gov.vn','.net','.info'],a:1,
- e:'.gov.vn dành cho cơ quan nhà nước; .edu.vn cho cơ sở giáo dục; .com.vn cho doanh nghiệp. .net và .info ai cũng đăng ký được.'},
-{d:2,t:'yesno',q:'Đối với mỗi phát biểu về quản lý tệp, hãy chọn Yes nếu đúng hoặc No nếu sai.',
- rows:['Tệp có phần mở rộng .docx được tạo bởi Microsoft Word.','Tệp đã xóa vào Thùng rác (Recycle Bin) có thể khôi phục khi chưa dọn thùng rác.','Nén tệp thành .zip giúp giảm dung lượng và gom nhiều tệp thành một.','Đổi tên tệp bao-cao.docx thành bao-cao.pdf sẽ chuyển tệp sang định dạng PDF.'],a:[1,1,1,0],
- e:'Đổi phần mở rộng không chuyển đổi định dạng, chỉ làm tệp không mở được. Muốn có PDF, dùng File > Save As / Export > PDF.'},
-{d:2,t:'match',order:true,q:'Sắp xếp các bước của quy trình tìm kiếm và sử dụng thông tin trực tuyến theo đúng thứ tự.',
- items:['Xác định câu hỏi / nhu cầu thông tin','Chọn từ khóa và công cụ tìm kiếm phù hợp','Đánh giá độ tin cậy của các nguồn','Tổng hợp thông tin và trích dẫn nguồn'],targets:STEPS4,a:[0,1,2,3],
- e:'Xác định nhu cầu → tìm kiếm → đánh giá → sử dụng và trích dẫn. Bỏ bước đánh giá là nguyên nhân phổ biến dẫn đến dùng thông tin sai.'},
-{d:2,t:'single',q:'Cookie trên trình duyệt web là gì?',
- o:['Một loại virus làm chậm máy','Tệp dữ liệu nhỏ do website lưu trên máy để ghi nhớ đăng nhập, giỏ hàng, tùy chọn','Phần mềm chặn quảng cáo','Bản sao lưu toàn bộ trang web'],a:1,
- e:'Cookie giúp website "nhớ" bạn. Cookie bên thứ ba có thể dùng để theo dõi quảng cáo, vì vậy nên xem lại cài đặt quyền riêng tư và xóa cookie khi dùng máy công cộng.'},
-{d:2,t:'single',q:'Bạn muốn làm việc với cùng một tệp trên máy tính công ty, laptop ở nhà và điện thoại, và luôn là phiên bản mới nhất. Giải pháp phù hợp nhất là gì?',
- o:['Gửi email tệp cho chính mình sau mỗi lần sửa','Lưu tệp trong thư mục đồng bộ đám mây (OneDrive, Google Drive, Dropbox)','Chép tệp vào USB và mang theo','Lưu tệp trên Desktop của máy công ty'],a:1,
- e:'Dịch vụ đồng bộ đám mây tự cập nhật tệp trên mọi thiết bị đăng nhập cùng tài khoản và có lịch sử phiên bản. Gửi email hay USB dễ tạo nhiều bản lệch nhau.'},
-{d:2,t:'match',q:'Ghép mỗi phần mở rộng tệp với loại nội dung tương ứng.',
- items:['.xlsx','.pptx','.mp4','.png','.exe','.mp3'],targets:['Bảng tính','Bài trình chiếu','Video','Hình ảnh'],a:[0,1,2,3],
+ targets:['Tìm chính xác cả cụm từ','Bỏ các kết quả có từ đứng ngay sau','Chỉ tìm trong một trang web','Chỉ tìm loại tệp (pdf, pptx...)'],a:[0,1,2,3],
+ e:'Ví dụ: "khủng long" site:edu.vn filetype:pdf -đồ chơi. OR tìm một trong hai từ; * thay cho một từ bất kỳ.'},
+{d:2,t:'multi',q:'Bạn tìm tài liệu cho bài thuyết trình Khoa học. Ba dấu hiệu nào cho thấy trang web đáng tin cậy?',
+ o:['Có tên tác giả hoặc tổ chức uy tín','Có rất nhiều quảng cáo nhấp nháy','Có ngày đăng và được cập nhật gần đây','Có ghi nguồn tham khảo, kiểm tra được ở nơi khác','Màu sắc đẹp và nhiều hình động'],a:[0,2,3],
+ e:'Kiểm tra: AI viết? KHI NÀO viết? DỰA VÀO ĐÂU? Giao diện đẹp hay xuất hiện đầu trang tìm kiếm không chứng minh thông tin đúng.'},
+{d:2,t:'single',q:'Tên miền nào thường dùng cho trường học và cơ sở giáo dục ở Việt Nam?',
+ o:['.com.vn','.edu.vn','.net','.shop'],a:1,
+ e:'.edu.vn: giáo dục; .gov.vn: cơ quan nhà nước; .com.vn: doanh nghiệp. .net, .shop thì ai cũng đăng ký được.'},
+{d:2,t:'yesno',q:'Với mỗi phát biểu về tệp và thư mục, hãy chọn Yes nếu đúng hoặc No nếu sai.',
+ rows:['Tệp .docx được tạo bằng Microsoft Word.','Tệp đã xóa vào Thùng rác (Recycle Bin) có thể khôi phục khi chưa dọn thùng rác.','Nén tệp thành .zip giúp giảm dung lượng và gom nhiều tệp thành một.','Đổi tên bai-tap.docx thành bai-tap.pdf sẽ biến tệp thành PDF.'],a:[1,1,1,0],
+ e:'Đổi đuôi tệp không chuyển định dạng mà chỉ làm tệp mở không được. Muốn có PDF, dùng File > Save As (hoặc Export) > PDF.'},
+{d:2,t:'match',order:true,q:'Sắp xếp các bước tìm thông tin cho bài tập theo đúng thứ tự.',
+ items:['Xác định mình cần tìm thông tin gì','Chọn từ khóa và tìm kiếm','Kiểm tra độ tin cậy của nguồn','Tổng hợp, viết bài và ghi nguồn'],targets:['Bước 1','Bước 2','Bước 3','Bước 4'],a:[0,1,2,3],
+ e:'Xác định nhu cầu → tìm → đánh giá → sử dụng và ghi nguồn.'},
+{d:2,t:'single',q:'Cookie trên trình duyệt là gì?',
+ o:['Một loại virus','Tệp nhỏ do trang web lưu trên máy để ghi nhớ đăng nhập, giỏ hàng, cài đặt của bạn','Phần mềm chặn quảng cáo','Bản sao của toàn bộ trang web'],a:1,
+ e:'Cookie giúp trang web "nhớ" bạn. Khi dùng máy tính chung ở trường, hãy đăng xuất và xóa lịch sử, cookie trước khi rời đi.'},
+{d:2,t:'single',q:'Bạn muốn làm bài tập trên máy tính ở trường, laptop ở nhà và điện thoại, luôn mở được bản mới nhất. Bạn nên lưu tệp ở đâu?',
+ o:['Gửi email tệp cho chính mình mỗi lần sửa','Thư mục đám mây đồng bộ (OneDrive, Google Drive)','Chỉ lưu trên Desktop máy ở trường','Chép vào USB rồi để ở trường'],a:1,
+ e:'Dịch vụ đám mây tự đồng bộ tệp trên mọi thiết bị đăng nhập cùng tài khoản và giữ lịch sử phiên bản.'},
+{d:2,t:'match',q:'Ghép mỗi đuôi tệp với loại nội dung tương ứng.',
+ items:['.xlsx','.pptx','.mp4','.jpg','.exe','.mp3'],targets:['Bảng tính','Bài trình chiếu','Video','Hình ảnh'],a:[0,1,2,3],
  e:'.exe là tệp chương trình (cẩn thận khi tải về), .mp3 là âm thanh.'},
-{d:2,t:'hotspot',svg:'taskbar',q:'Bạn cần sắp xếp tài liệu vào các thư mục. Hãy nhấp vào biểu tượng trên taskbar để mở File Explorer (trình quản lý tệp).',a:2,
+{d:2,t:'hotspot',svg:'taskbar',q:'Bạn muốn mở các thư mục để sắp xếp bài tập. Nhấp vào biểu tượng trên taskbar để mở File Explorer.',a:2,
  e:'File Explorer có biểu tượng thư mục màu vàng. Phím tắt: Windows + E.'},
-{d:2,t:'hotspot',svg:'browser',q:'Bạn muốn lưu trang đang xem vào Dấu trang (Bookmark) để mở lại sau. Hãy nhấp vào vị trí phù hợp trên trình duyệt.',a:4,
- e:'Biểu tượng ngôi sao ở cuối thanh địa chỉ dùng để thêm dấu trang. Phím tắt: Ctrl + D.'},
+{d:2,t:'hotspot',svg:'browser',q:'Bạn muốn lưu trang web đang xem vào Dấu trang (Bookmark) để lần sau mở lại nhanh. Nhấp vào vị trí phù hợp.',a:4,
+ e:'Biểu tượng ngôi sao cuối thanh địa chỉ dùng để thêm dấu trang. Phím tắt: Ctrl + D.'},
+{d:2,t:'single',q:'Tên tệp nào giúp bạn và thầy cô dễ tìm và nhận biết nhất?',
+ o:['tailieu1.docx','BaiTap_KhoaHoc_Nhom3_2026-10-10.docx','aaaaa.docx','Moi.docx'],a:1,
+ e:'Tên tệp tốt cho biết nội dung, người làm và ngày tháng. Dùng ngày dạng năm-tháng-ngày để tệp tự sắp xếp đúng thứ tự.'},
+{d:2,t:'single',q:'Bạn vừa lưu một tệp nhưng quên lưu ở thư mục nào. Cách nhanh nhất để tìm lại là gì?',
+ o:['Làm lại bài từ đầu','Gõ tên tệp vào ô tìm kiếm của File Explorer hoặc xem mục Gần đây (Recent)','Khởi động lại máy tính','Xóa bớt tệp khác'],a:1,
+ e:'Ô tìm kiếm trên taskbar/File Explorer và danh sách Recent trong Word, Excel giúp tìm lại tệp vừa dùng.'},
+{d:2,t:'single',q:'Bạn nên dùng Wikipedia cho bài tập như thế nào?',
+ o:['Chép nguyên văn vì Wikipedia luôn đúng','Dùng làm điểm bắt đầu, rồi kiểm tra các nguồn tham khảo ghi ở cuối bài','Không bao giờ được đọc Wikipedia','Chỉ xem hình ảnh'],a:1,
+ e:'Ai cũng có thể sửa Wikipedia, nên hãy dùng nó để hiểu tổng quan, rồi đọc và trích dẫn các nguồn gốc ở mục Tham khảo.'},
 
-/* ---------- 3. TẠO NỘI DUNG ---------- */
-{d:3,t:'single',q:'Bạn cần chèn logo có nền trong suốt lên slide thuyết trình. Định dạng ảnh nào phù hợp nhất?',
+/* ======================= 4. TẠO NỘI DUNG (15) ======================= */
+{d:3,t:'single',q:'Bạn cần chèn logo có nền trong suốt lên slide. Định dạng ảnh nào phù hợp nhất?',
  o:['JPG','PNG','BMP','MP4'],a:1,
- e:'PNG hỗ trợ nền trong suốt và nén không mất dữ liệu. JPG không có nền trong suốt; BMP dung lượng lớn; MP4 là video.'},
-{d:3,t:'multi',q:'Hai nguyên tắc nào giúp slide thuyết trình rõ ràng, chuyên nghiệp?',
- o:['Mỗi slide một ý chính, ít chữ, gạch đầu dòng ngắn','Màu chữ tương phản rõ với nền','Dùng càng nhiều hiệu ứng chuyển động càng tốt','Chép nguyên văn bài nói lên slide','Dùng 4–5 phông chữ khác nhau cho sinh động'],a:[0,1],
- e:'Slide là phần hỗ trợ người nói: ít chữ, tương phản cao, tối đa 2 phông chữ, hiệu ứng tiết chế.'},
-{d:3,t:'yesno',q:'Đối với mỗi phát biểu về tính năng của trình soạn thảo văn bản (Microsoft Word), hãy chọn Yes nếu đúng hoặc No nếu sai.',
- rows:['Track Changes ghi lại mọi chỉnh sửa để người khác chấp nhận hoặc từ chối.','Định dạng tiêu đề bằng Heading Styles giúp tạo mục lục tự động.','Nội dung trong Header (đầu trang) chỉ xuất hiện ở trang đầu tiên.','Save As luôn ghi đè lên tệp gốc.'],a:[1,1,0,0],
- e:'Header/Footer lặp lại trên mọi trang (trừ khi chọn "Different First Page"). Save As tạo tệp mới với tên/định dạng/vị trí khác, tệp gốc giữ nguyên.'},
-{d:3,t:'single',q:'Trong Excel, điểm của 9 học sinh nằm ở ô B2 đến B10. Công thức nào tính điểm trung bình?',
- o:['=SUM(B2:B10)','=AVERAGE(B2:B10)','=AVERAGE(B2+B10)','=MEAN(B2;B10)'],a:1,
- e:'AVERAGE tính trung bình cộng của một vùng ô; dấu hai chấm ":" biểu thị vùng liên tục. B2+B10 chỉ cộng hai ô; Excel không có hàm MEAN.'},
-{d:3,t:'match',q:'Ghép mỗi hàm Excel với chức năng của nó.',
- items:['SUM','AVERAGE','MAX','COUNT','IF','VLOOKUP'],
- targets:['Tính tổng các giá trị','Tìm giá trị lớn nhất','Đếm số ô chứa giá trị số','Trả về kết quả khác nhau tùy điều kiện đúng/sai'],a:[0,2,3,4],
- e:'AVERAGE tính trung bình; VLOOKUP dò tìm giá trị theo cột trong bảng.'},
-{d:3,t:'single',q:'Bạn muốn sao chép công thức xuống các dòng bên dưới nhưng luôn giữ cố định ô A1 (chứa tỷ giá). Bạn viết tham chiếu như thế nào?',
+ e:'PNG hỗ trợ nền trong suốt và giữ ảnh sắc nét. JPG không có nền trong suốt; MP4 là video.'},
+{d:3,t:'multi',q:'Hai nguyên tắc nào giúp slide thuyết trình dễ nhìn, chuyên nghiệp?',
+ o:['Mỗi slide một ý chính, ít chữ','Màu chữ tương phản rõ với màu nền','Dùng thật nhiều hiệu ứng bay nhảy','Chép cả đoạn văn dài lên slide','Dùng 5 phông chữ khác nhau cho vui mắt'],a:[0,1],
+ e:'Slide chỉ hỗ trợ lời nói: ít chữ, tương phản cao, tối đa 2 phông chữ, hiệu ứng vừa phải.'},
+{d:3,t:'yesno',q:'Với mỗi phát biểu về Microsoft Word, hãy chọn Yes nếu đúng hoặc No nếu sai.',
+ rows:['Track Changes ghi lại các chỉnh sửa để người khác đồng ý hoặc từ chối.','Dùng kiểu Heading cho tiêu đề giúp tạo mục lục tự động.','Nội dung ở Header (đầu trang) chỉ hiện ở trang đầu tiên.','Save As luôn ghi đè lên tệp gốc.'],a:[1,1,0,0],
+ e:'Header/Footer lặp lại trên mọi trang. Save As tạo tệp mới (tên, vị trí hoặc định dạng khác), tệp gốc vẫn còn nguyên.'},
+{d:3,t:'single',q:'Trong Excel, điểm của 9 bạn nằm ở ô B2 đến B10. Công thức nào tính điểm trung bình?',
+ o:['=SUM(B2:B10)','=AVERAGE(B2:B10)','=AVERAGE(B2+B10)','=MEAN(B2:B10)'],a:1,
+ e:'AVERAGE tính trung bình cộng; B2:B10 nghĩa là từ B2 đến B10. Excel không có hàm MEAN.'},
+{d:3,t:'match',q:'Ghép mỗi hàm Excel với công dụng của nó.',
+ items:['SUM','AVERAGE','MAX','MIN','COUNT','IF'],
+ targets:['Tính tổng','Tìm số lớn nhất','Tìm số nhỏ nhất','Đếm số ô có chứa số'],a:[0,2,3,4],
+ e:'AVERAGE tính trung bình; IF trả kết quả khác nhau tùy điều kiện đúng hay sai.'},
+{d:3,t:'single',q:'Bạn sao chép công thức xuống các dòng dưới nhưng muốn luôn giữ cố định ô A1. Bạn viết tham chiếu thế nào?',
  o:['A1','$A$1','A$1$','#A1'],a:1,
- e:'$A$1 là tham chiếu tuyệt đối: không đổi khi sao chép. Nhấn F4 khi đang chọn tham chiếu để chuyển nhanh giữa A1 → $A$1 → A$1 → $A1.'},
-{d:3,t:'single',q:'Bạn gửi hợp đồng cho đối tác và muốn tài liệu hiển thị giống hệt nhau trên mọi thiết bị, hạn chế bị chỉnh sửa. Bạn nên lưu ở định dạng nào?',
+ e:'$A$1 là tham chiếu tuyệt đối, không đổi khi sao chép. Nhấn F4 để thêm dấu $ nhanh.'},
+{d:3,t:'single',q:'Bạn nộp bài cho thầy cô qua mạng và muốn bài hiển thị giống hệt nhau trên mọi máy, khó bị sửa. Nên lưu định dạng nào?',
  o:['.docx','.txt','.pdf','.html'],a:2,
- e:'PDF giữ nguyên bố cục, phông chữ trên mọi thiết bị và khó chỉnh sửa hơn tệp Word.'},
-{d:3,t:'single',q:'Bạn muốn thể hiện tỷ lệ phần trăm doanh thu của từng nhóm sản phẩm trong tổng doanh thu. Loại biểu đồ nào phù hợp nhất?',
- o:['Biểu đồ đường (Line)','Biểu đồ tròn (Pie)','Biểu đồ phân tán (Scatter)','Biểu đồ vùng (Area)'],a:1,
- e:'Biểu đồ tròn thể hiện các phần của một tổng thể 100%. Biểu đồ đường thể hiện xu hướng theo thời gian; phân tán thể hiện tương quan giữa hai biến.'},
-{d:3,t:'match',order:true,q:'Sắp xếp các bước tạo một video giới thiệu theo đúng thứ tự.',
- items:['Lên ý tưởng và viết kịch bản','Quay phim, thu âm, thu thập tư liệu','Biên tập: cắt ghép, thêm phụ đề, nhạc nền','Xuất video (render) và chia sẻ'],targets:STEPS4,a:[0,1,2,3],
- e:'Quy trình chuẩn: tiền kỳ (kịch bản) → sản xuất (quay, thu) → hậu kỳ (biên tập) → xuất bản.'},
-{d:3,t:'single',q:'Bạn chèn một bức ảnh lấy từ Internet vào bài báo cáo. Việc nào cần làm để đúng quy định về bản quyền?',
- o:['Cắt bớt viền ảnh để thành ảnh của mình','Kiểm tra giấy phép sử dụng và ghi nguồn theo yêu cầu của giấy phép','Đổi tên tệp ảnh','Giảm độ phân giải ảnh'],a:1,
- e:'Chỉnh sửa ảnh không làm mất bản quyền của tác giả. Luôn kiểm tra giấy phép (Creative Commons, miễn phí bản quyền...) và ghi nguồn đầy đủ.'},
+ e:'PDF giữ nguyên bố cục, phông chữ và hình ảnh trên mọi thiết bị.'},
+{d:3,t:'single',q:'Bạn muốn biểu diễn tỷ lệ phần trăm các môn thể thao yêu thích của cả lớp. Loại biểu đồ nào phù hợp nhất?',
+ o:['Biểu đồ đường (Line)','Biểu đồ tròn (Pie)','Biểu đồ phân tán (Scatter)','Không cần biểu đồ'],a:1,
+ e:'Biểu đồ tròn cho thấy các phần của một tổng thể 100%. Biểu đồ đường thể hiện sự thay đổi theo thời gian.'},
+{d:3,t:'match',order:true,q:'Sắp xếp các bước làm một video giới thiệu lớp theo đúng thứ tự.',
+ items:['Lên ý tưởng và viết kịch bản','Quay phim, chụp ảnh, thu âm','Biên tập: cắt ghép, thêm chữ, nhạc nền','Xuất video và chia sẻ'],targets:['Bước 1','Bước 2','Bước 3','Bước 4'],a:[0,1,2,3],
+ e:'Kịch bản → quay → biên tập → xuất bản.'},
+{d:3,t:'single',q:'Bạn chèn một bức ảnh lấy trên Internet vào bài thuyết trình. Bạn cần làm gì để đúng quy định bản quyền?',
+ o:['Cắt bớt viền ảnh là thành ảnh của mình','Kiểm tra giấy phép của ảnh và ghi nguồn','Đổi tên tệp ảnh','Làm ảnh nhỏ lại'],a:1,
+ e:'Sửa ảnh không làm mất bản quyền của tác giả. Chọn ảnh có giấy phép phù hợp (Creative Commons, ảnh miễn phí) và ghi nguồn.'},
+{d:3,t:'hotspot',svg:'word',q:'Bạn muốn làm cho tiêu đề bài viết in đậm. Nhấp vào nút phù hợp trên thanh công cụ.',a:0,
+ e:'Nút B (Bold) làm chữ in đậm; I (Italic) in nghiêng; U (Underline) gạch chân. Phím tắt in đậm: Ctrl + B.'},
+{d:3,t:'hotspot',svg:'word',q:'Bạn muốn căn giữa dòng tiêu đề. Nhấp vào nút phù hợp trên thanh công cụ.',a:4,
+ e:'Nút căn giữa (Center) có các dòng dài ngắn xếp đối xứng. Phím tắt: Ctrl + E.'},
+{d:3,t:'single',q:'Trong Excel, bạn muốn xếp bảng điểm từ cao xuống thấp. Bạn dùng lệnh nào?',
+ o:['Sort Largest to Smallest (Sắp xếp từ lớn đến nhỏ)','Sort Smallest to Largest','Merge & Center','Wrap Text'],a:0,
+ e:'Data > Sort hoặc Home > Sort & Filter > Sort Largest to Smallest. Merge & Center gộp ô; Wrap Text xuống dòng trong ô.'},
+{d:3,t:'match',q:'Trong PowerPoint, ghép mỗi thẻ (tab) với việc bạn muốn làm.',
+ items:['Insert','Transitions','Review','Design','View'],
+ targets:['Chèn hình ảnh vào slide','Thêm hiệu ứng chuyển giữa các slide','Kiểm tra chính tả','Đổi giao diện (theme) cho cả bài'],a:[0,1,2,3],
+ e:'Insert: chèn; Transitions: chuyển slide; Review: chính tả, bình luận; Design: chủ đề, kích thước slide. View dùng để đổi chế độ xem.'},
+{d:3,t:'single',q:'Trong Excel, một ô hiển thị ##### thay vì con số. Nguyên nhân thường gặp là gì?',
+ o:['Máy tính bị nhiễm virus','Cột quá hẹp, cần kéo rộng cột','Công thức sai chính tả','Tệp bị hỏng'],a:1,
+ e:'##### xuất hiện khi số không vừa độ rộng cột. Nhấp đúp vào đường biên tiêu đề cột để tự giãn vừa.'},
 
-/* ---------- 4. GIAO TIẾP ---------- */
-{d:4,t:'single',q:'Bạn gửi thông báo cho 50 khách hàng và không muốn họ thấy địa chỉ email của nhau. Bạn nên nhập danh sách email vào trường nào?',
- o:['To','CC','BCC','Subject'],a:2,
- e:'BCC (Blind Carbon Copy): người nhận không thấy những ai khác được gửi cùng. Dùng CC sẽ làm lộ toàn bộ danh sách email khách hàng.'},
-{d:4,t:'match',q:'Ghép mỗi công cụ giao tiếp với tình huống sử dụng phù hợp nhất.',
- items:['Email','Tin nhắn tức thời (Chat)','Hội nghị truyền hình (Video conference)','Diễn đàn trực tuyến (Forum)','Fax'],
- targets:['Gửi văn bản chính thức kèm tệp đính kèm, người nhận đọc khi thuận tiện.','Trao đổi nhanh, ngắn gọn theo thời gian thực.','Họp trực tuyến, nhìn thấy và nghe nhau, chia sẻ màn hình.','Thảo luận theo chủ đề, lưu lại để nhiều người tham khảo lâu dài.'],a:[0,1,2,3],
- e:'Chọn đúng kênh giúp truyền đạt hiệu quả: việc chính thức → email; việc gấp, ngắn → chat; thảo luận cần tương tác → họp video; kiến thức dùng lâu dài → diễn đàn.'},
-{d:4,t:'yesno',q:'Đối với mỗi phát biểu về email công việc, hãy chọn Yes nếu đúng hoặc No nếu sai.',
- rows:['Dòng tiêu đề (Subject) nên tóm tắt nội dung email.','Nên dùng Reply All cho mọi email để không ai bị bỏ sót.','Email công việc nên có lời chào, nội dung rõ ràng và chữ ký.','Trả lời email ngay khi đang nóng giận là cách phản hồi hiệu quả.'],a:[1,0,1,0],
- e:'Reply All chỉ dùng khi tất cả người nhận đều cần biết. Khi đang bực bội, hãy soạn nháp và đọc lại sau.'},
-{d:4,t:'single',q:'Hình thức giao tiếp nào sau đây là giao tiếp ĐỒNG BỘ (synchronous, các bên tham gia cùng lúc)?',
- o:['Email','Bài đăng trên diễn đàn','Cuộc gọi video','Bình luận trên blog'],a:2,
- e:'Đồng bộ: gọi điện, họp video, chat trực tiếp. Không đồng bộ: email, diễn đàn, bình luận, người nhận phản hồi vào lúc khác.'},
-{d:4,t:'multi',q:'Bạn cần gửi một tệp video 300 MB nhưng hệ thống email giới hạn tệp đính kèm 25 MB. Hai cách xử lý phù hợp là gì?',
- o:['Tải tệp lên OneDrive/Google Drive và gửi liên kết chia sẻ','Đổi phần mở rộng tệp thành .txt','Dùng dịch vụ chuyển tệp lớn hoặc nén và chia nhỏ tệp','Chụp ảnh màn hình video để gửi','Gửi lại nhiều lần cho đến khi thành công'],a:[0,2],
- e:'Tệp lớn nên chia sẻ qua liên kết đám mây (có thể phân quyền và thu hồi) hoặc dịch vụ chuyển tệp lớn.'},
-{d:4,t:'single',q:'Chữ ký email (email signature) chuyên nghiệp thường bao gồm thông tin gì?',
- o:['Họ tên, chức danh, công ty, số điện thoại, website','Mật khẩu email để người nhận tiện liên hệ','Toàn bộ lịch sử email trước đó','Ảnh động và nhạc nền'],a:0,
- e:'Chữ ký email giúp người nhận biết bạn là ai và liên hệ bằng cách nào. Không bao giờ đưa mật khẩu vào email.'},
-{d:4,t:'single',q:'Khi gửi email cho khách hàng hoặc đối tác, điều nào nên TRÁNH?',
- o:['Lời chào phù hợp','Dùng nhiều tiếng lóng, viết tắt và biểu tượng cảm xúc','Nội dung ngắn gọn, rõ ràng','Kiểm tra chính tả trước khi gửi'],a:1,
- e:'Văn phong công việc cần trang trọng, rõ ràng. Tiếng lóng, viết tắt dễ gây hiểu lầm và thiếu chuyên nghiệp.'},
-{d:4,t:'single',q:'Bạn sắp nghỉ phép một tuần và muốn người gửi email biết bạn vắng mặt, kèm người liên hệ thay thế. Bạn dùng tính năng nào?',
- o:['Chuyển tiếp (Forward) tất cả email','Trả lời tự động (Automatic Replies / Out of Office)','Đánh dấu tất cả là đã đọc','Tắt hộp thư'],a:1,
- e:'Out of Office tự gửi thông báo vắng mặt cho người gửi trong khoảng thời gian bạn đặt.'},
+/* ======================= 5. GIAO TIẾP (13) ======================= */
+{d:4,t:'single',q:'Cô giáo gửi thông báo cho phụ huynh cả lớp và không muốn phụ huynh thấy địa chỉ email của nhau. Cô nên nhập danh sách email vào ô nào?',
+ o:['To (Đến)','Cc','Bcc','Subject (Tiêu đề)'],a:2,
+ e:'Bcc (bản sao ẩn): người nhận không thấy những ai khác cùng nhận thư. Dùng To hoặc Cc sẽ lộ toàn bộ danh sách email.'},
+{d:4,t:'match',q:'Ghép mỗi cách liên lạc với tình huống phù hợp nhất.',
+ items:['Email','Tin nhắn (Chat)','Gọi video','Diễn đàn / Bảng tin lớp','Thư tay qua bưu điện'],
+ targets:['Gửi bài tập kèm tệp cho thầy cô, thầy cô đọc khi rảnh','Hỏi nhanh bạn cùng nhóm một câu ngắn','Họp nhóm online, nhìn thấy nhau và chia sẻ màn hình','Đăng câu hỏi để cả lớp cùng thảo luận và xem lại sau'],a:[0,1,2,3],
+ e:'Chọn đúng kênh giúp trao đổi hiệu quả: chính thức, có tệp → email; nhanh, ngắn → chat; cần thảo luận trực tiếp → gọi video; lưu lại cho nhiều người → diễn đàn.'},
+{d:4,t:'yesno',q:'Với mỗi phát biểu về email, hãy chọn Yes nếu đúng hoặc No nếu sai.',
+ rows:['Tiêu đề (Subject) nên tóm tắt nội dung email.','Nên dùng Reply All cho mọi email.','Email gửi thầy cô nên có lời chào, nội dung rõ ràng và tên người gửi.','Nên trả lời email ngay khi đang tức giận.'],a:[1,0,1,0],
+ e:'Reply All chỉ dùng khi mọi người nhận đều cần biết. Khi đang bực, hãy viết nháp và đọc lại sau.'},
+{d:4,t:'single',q:'Hình thức nào là giao tiếp ĐỒNG BỘ (mọi người tham gia cùng lúc)?',
+ o:['Email','Bài đăng trên diễn đàn','Cuộc gọi video','Bình luận dưới bài viết'],a:2,
+ e:'Đồng bộ: gọi điện, gọi video, lớp học trực tuyến. Không đồng bộ: email, diễn đàn, bình luận, người nhận trả lời vào lúc khác.'},
+{d:4,t:'multi',q:'Bạn cần gửi video bài tập 300 MB, nhưng email chỉ cho đính kèm tối đa 25 MB. Hai cách nào phù hợp?',
+ o:['Tải video lên Google Drive/OneDrive và gửi đường liên kết','Đổi đuôi tệp thành .txt','Dùng dịch vụ gửi tệp lớn hoặc nén, chia nhỏ tệp','Chụp màn hình video để gửi','Bấm Gửi nhiều lần cho đến khi được'],a:[0,2],
+ e:'Tệp lớn nên chia sẻ bằng liên kết đám mây (có thể phân quyền) hoặc dịch vụ gửi tệp lớn.'},
+{d:4,t:'single',q:'Chữ ký email (signature) thường có những thông tin gì?',
+ o:['Họ tên, lớp/trường hoặc chức danh, cách liên hệ','Mật khẩu email','Toàn bộ các email cũ','Nhạc nền và ảnh động'],a:0,
+ e:'Chữ ký email giúp người nhận biết bạn là ai. Không bao giờ ghi mật khẩu vào email.'},
+{d:4,t:'single',q:'Khi viết email cho thầy cô, điều nào nên TRÁNH?',
+ o:['Lời chào phù hợp','Dùng tiếng lóng, viết tắt và nhiều biểu tượng cảm xúc','Viết ngắn gọn, rõ ràng','Kiểm tra chính tả trước khi gửi'],a:1,
+ e:'Email với thầy cô, người lớn cần lịch sự, rõ ràng. Tiếng lóng, viết tắt dễ gây hiểu lầm.'},
+{d:4,t:'single',q:'Thầy chủ nhiệm đi công tác một tuần và muốn ai gửi email cũng nhận được thông báo thầy vắng mặt. Thầy dùng tính năng nào?',
+ o:['Chuyển tiếp (Forward) mọi email','Trả lời tự động (Automatic Replies / Out of Office)','Đánh dấu tất cả là đã đọc','Xóa hộp thư'],a:1,
+ e:'Out of Office tự động trả lời người gửi trong khoảng thời gian được đặt.'},
+{d:4,t:'hotspot',svg:'mail',q:'Bạn muốn gửi kèm tệp bài tập trong email này. Nhấp vào nút phù hợp.',a:4,
+ e:'Biểu tượng kẹp giấy (Attach / Đính kèm) dùng để thêm tệp vào email.'},
+{d:4,t:'hotspot',svg:'mail',q:'Bạn gửi bài cho cô giáo bộ môn và muốn gửi bản sao để cô chủ nhiệm cùng biết. Nhấp vào ô phù hợp để thêm địa chỉ cô chủ nhiệm.',a:2,
+ e:'Cc (bản sao): người nhận ở Cc được biết thông tin, người nhận chính nằm ở To. Mọi người đều thấy địa chỉ trong ô Cc.'},
+{d:4,t:'single',q:'Trong lớp học trực tuyến, khi chưa đến lượt phát biểu, bạn nên làm gì?',
+ o:['Bật micro để mọi người nghe tiếng ồn xung quanh','Tắt micro (Mute) và dùng nút giơ tay khi muốn phát biểu','Rời khỏi lớp','Nói chen vào lúc thầy cô đang giảng'],a:1,
+ e:'Tắt micro giúp lớp không bị ồn. Dùng tính năng Raise hand (giơ tay) hoặc khung chat để xin phát biểu.'},
+{d:4,t:'multi',q:'Hai việc nào là quy tắc lịch sự khi học trực tuyến qua video?',
+ o:['Vào lớp đúng giờ, chuẩn bị chỗ ngồi gọn gàng','Dùng khung chat đúng mục đích, lịch sự','Chia sẻ đường link lớp học lên mạng xã hội','Ăn uống trước camera','Đổi tên hiển thị thành tên vui nhộn'],a:[0,1],
+ e:'Đúng giờ, gọn gàng, chat lịch sự. Không chia sẻ link lớp công khai vì người lạ có thể vào phá.'},
+{d:4,t:'single',q:'Nhóm chat của lớp có 40 bạn. Bạn muốn hỏi riêng một bạn về chuyện cá nhân. Bạn nên làm gì?',
+ o:['Hỏi trong nhóm chat lớp','Nhắn tin riêng (tin nhắn trực tiếp) cho bạn đó','Đăng lên trang cá nhân','Gửi email cho cả lớp'],a:1,
+ e:'Chuyện riêng nên nhắn riêng. Nhóm chung dành cho thông tin cả lớp cần biết.'},
 
-/* ---------- 5. CỘNG TÁC ---------- */
-{d:5,t:'multi',q:'Nhóm của bạn cùng soạn báo cáo trên Microsoft 365 hoặc Google Docs. Ba lợi ích của đồng soạn thảo trực tuyến (co-authoring) là gì?',
- o:['Nhiều người chỉnh sửa cùng lúc trên một tệp duy nhất','Không cần kết nối Internet','Xem và khôi phục phiên bản trước nhờ lịch sử phiên bản','Thêm bình luận, gắn tên (@mention) để giao việc','Mỗi người giữ một bản riêng rồi gộp thủ công'],a:[0,2,3],
- e:'Co-authoring loại bỏ việc gửi qua lại nhiều bản. Tính năng cần Internet để đồng bộ.'},
-{d:5,t:'single',q:'Bạn chia sẻ tài liệu trên Google Docs và muốn người nhận chỉ được góp ý (bình luận) nhưng không sửa nội dung. Bạn chọn quyền nào?',
+/* ======================= 6. CỘNG TÁC (13) ======================= */
+{d:5,t:'multi',q:'Nhóm bạn cùng làm bài báo cáo trên Google Docs hoặc Word Online. Ba lợi ích của việc cùng soạn thảo trực tuyến là gì?',
+ o:['Nhiều bạn cùng sửa một tệp cùng lúc','Không cần Internet','Xem và khôi phục bản cũ nhờ lịch sử phiên bản','Viết bình luận, gắn tên @bạn để giao việc','Mỗi người làm một bản rồi tự ghép lại'],a:[0,2,3],
+ e:'Cùng soạn thảo trực tuyến giúp không phải gửi qua lại nhiều bản. Cần Internet để đồng bộ.'},
+{d:5,t:'single',q:'Bạn chia sẻ tài liệu và chỉ muốn bạn bè góp ý bằng bình luận, không sửa nội dung. Bạn chọn quyền nào?',
  o:['Người xem (Viewer)','Người nhận xét (Commenter)','Người chỉnh sửa (Editor)','Chủ sở hữu (Owner)'],a:1,
- e:'Commenter được bình luận và đề xuất, không sửa trực tiếp. Viewer chỉ xem; Editor được sửa.'},
-{d:5,t:'yesno',q:'Đối với mỗi phát biểu về lịch sử phiên bản (version history), hãy chọn Yes nếu đúng hoặc No nếu sai.',
- rows:['Lịch sử phiên bản cho biết ai đã chỉnh sửa và chỉnh sửa khi nào.','Khôi phục một phiên bản cũ sẽ xóa vĩnh viễn mọi phiên bản mới hơn.','Có thể đặt tên cho một phiên bản quan trọng để dễ tìm lại.','Lịch sử phiên bản chỉ có khi tệp được lưu trên ổ cứng máy tính cá nhân.'],a:[1,0,1,0],
- e:'Khôi phục phiên bản cũ thường tạo ra một phiên bản mới, các phiên bản khác vẫn còn. Lịch sử phiên bản là tính năng của dịch vụ đám mây (OneDrive, SharePoint, Google Drive).'},
-{d:5,t:'single',q:'Nhóm dự án có thành viên ở Hà Nội và Tokyo. Cách hiệu quả nhất để chọn giờ họp trực tuyến là gì?',
- o:['Gửi email hỏi từng người rồi chờ phản hồi','Dùng lịch dùng chung (Outlook/Google Calendar) để xem giờ rảnh, lịch tự quy đổi múi giờ','Chọn theo giờ Hà Nội và mặc định mọi người tham gia','Họp ngoài giờ làm việc cho chắc'],a:1,
- e:'Lịch dùng chung có Scheduling Assistant / "Tìm thời gian" hiển thị giờ rảnh và tự quy đổi múi giờ cho từng người nhận lời mời.'},
-{d:5,t:'match',q:'Ghép mỗi vai trò chia sẻ với quyền hạn tương ứng.',
+ e:'Commenter được bình luận, góp ý nhưng không sửa trực tiếp.'},
+{d:5,t:'yesno',q:'Với mỗi phát biểu về lịch sử phiên bản (version history), hãy chọn Yes nếu đúng hoặc No nếu sai.',
+ rows:['Lịch sử phiên bản cho biết ai đã sửa và sửa lúc nào.','Khôi phục một bản cũ sẽ xóa vĩnh viễn mọi bản mới hơn.','Có thể đặt tên cho một phiên bản quan trọng.','Lịch sử phiên bản chỉ có khi lưu tệp trên USB.'],a:[1,0,1,0],
+ e:'Khôi phục bản cũ thường tạo ra một bản mới, các bản khác vẫn còn. Lịch sử phiên bản là tính năng của Google Drive, OneDrive.'},
+{d:5,t:'single',q:'Nhóm bạn cần hẹn giờ học nhóm online tuần này. Cách nào tiện nhất?',
+ o:['Mỗi người tự nhớ giờ','Tạo sự kiện trên lịch chung (Google Calendar / Outlook) và gửi lời mời kèm link họp cho cả nhóm','Hẹn miệng ở trường','Đăng giờ học lên mạng xã hội công khai'],a:1,
+ e:'Lời mời trên lịch tự nhắc mọi người, có link họp và cho biết ai đồng ý tham gia.'},
+{d:5,t:'match',q:'Ghép mỗi quyền chia sẻ với việc người đó được làm.',
  items:['Chủ sở hữu (Owner)','Người chỉnh sửa (Editor)','Người nhận xét (Commenter)','Người xem (Viewer)'],
- targets:['Toàn quyền, kể cả xóa tệp và chuyển quyền sở hữu','Sửa nội dung và chia sẻ (nếu được cho phép)','Chỉ thêm bình luận, góp ý','Chỉ đọc nội dung'],a:[0,1,2,3],
- e:'Nguyên tắc: cấp quyền thấp nhất đủ để làm việc (least privilege).'},
-{d:5,t:'single',q:'Bạn chia sẻ thư mục chứa dữ liệu khách hàng cho đồng nghiệp. Thiết lập nào an toàn nhất?',
- o:['Bất kỳ ai có liên kết đều có thể chỉnh sửa','Công khai trên web','Chỉ những người được chỉ định (bằng email) mới truy cập, với quyền tối thiểu cần thiết','Gửi mật khẩu tài khoản của bạn cho đồng nghiệp'],a:2,
- e:'Liên kết "Bất kỳ ai" có thể bị chuyển tiếp ra ngoài. Với dữ liệu nhạy cảm, chỉ chia sẻ cho người cụ thể và có thể đặt ngày hết hạn.'},
-{d:5,t:'single',q:'Nhóm bạn cần theo dõi tiến độ nhiều đầu việc: ai làm gì, hạn chót, trạng thái. Công cụ nào phù hợp nhất?',
- o:['Ứng dụng quản lý công việc như Microsoft Planner, Trello','Ứng dụng máy tính bỏ túi','Trình phát nhạc','Phần mềm chỉnh sửa ảnh'],a:0,
- e:'Planner/Trello dùng bảng Kanban: mỗi thẻ là một việc có người phụ trách, hạn chót, trạng thái, giúp cả nhóm nhìn tiến độ chung.'},
+ targets:['Toàn quyền, kể cả xóa tệp','Sửa nội dung','Chỉ thêm bình luận, góp ý','Chỉ đọc'],a:[0,1,2,3],
+ e:'Chỉ cấp quyền vừa đủ cho việc cần làm.'},
+{d:5,t:'single',q:'Bạn chia sẻ thư mục ảnh của lớp có ảnh các bạn. Cách chia sẻ nào an toàn nhất?',
+ o:['Ai có link cũng được chỉnh sửa','Đăng công khai lên mạng','Chỉ chia sẻ cho email của các bạn trong lớp, quyền Xem','Gửi mật khẩu tài khoản của bạn cho cả lớp'],a:2,
+ e:'Chia sẻ cho đúng người, quyền thấp nhất cần thiết. Link "ai cũng xem được" có thể bị chuyển ra ngoài.'},
+{d:5,t:'single',q:'Nhóm bạn cần theo dõi: ai làm phần nào, hạn nộp, đã xong chưa. Công cụ nào phù hợp?',
+ o:['Ứng dụng quản lý công việc như Microsoft Planner, Trello','Máy tính bỏ túi','Trình phát nhạc','Ứng dụng chỉnh ảnh'],a:0,
+ e:'Planner/Trello có các thẻ công việc với người phụ trách, hạn chót và trạng thái (Cần làm – Đang làm – Đã xong).'},
+{d:5,t:'single',q:'Trong Google Docs, bạn muốn nhắc bạn Lan sửa một đoạn văn. Cách nhanh nhất là gì?',
+ o:['Viết chữ in hoa vào giữa bài','Thêm bình luận và gõ @Lan để Lan nhận thông báo','Xóa đoạn văn đó','Gọi điện cho cả nhóm'],a:1,
+ e:'Gắn tên @ trong bình luận sẽ gửi thông báo cho người đó và có thể giao việc (Assign).'},
+{d:5,t:'single',q:'Một bạn trong nhóm lỡ xóa mất phần bài của bạn khác trên tài liệu chung. Làm sao lấy lại?',
+ o:['Viết lại từ đầu','Mở Lịch sử phiên bản và khôi phục bản trước khi bị xóa','Tạo tài liệu mới','Không thể lấy lại'],a:1,
+ e:'Google Docs: File > Version history. Word Online: File > Info > Version History.'},
+{d:5,t:'yesno',q:'Với mỗi phát biểu về làm việc nhóm online, hãy chọn Yes nếu đúng hoặc No nếu sai.',
+ rows:['Nên chia việc rõ ràng cho từng thành viên.','Nên đặt hạn chót cho từng phần việc.','Một bạn nên làm hết để nhanh hơn.','Nên tôn trọng ý kiến của các bạn khi góp ý.'],a:[1,1,0,1],
+ e:'Làm việc nhóm hiệu quả: phân công rõ, có hạn chót, góp ý tôn trọng, mọi người cùng tham gia.'},
+{d:5,t:'match',order:true,q:'Sắp xếp các bước làm một dự án nhóm trực tuyến theo đúng thứ tự.',
+ items:['Thống nhất mục tiêu và phân công','Mỗi bạn làm phần của mình trên tài liệu chung','Góp ý bằng bình luận và chỉnh sửa','Kiểm tra lần cuối và nộp bài'],targets:['Bước 1','Bước 2','Bước 3','Bước 4'],a:[0,1,2,3],
+ e:'Lập kế hoạch → thực hiện → góp ý, chỉnh sửa → hoàn thiện và nộp.'},
+{d:5,t:'single',q:'Trong buổi họp nhóm trên Teams hoặc Google Meet, bạn muốn cả nhóm cùng xem slide trên máy của bạn. Bạn dùng tính năng nào?',
+ o:['Tắt camera','Chia sẻ màn hình (Share screen / Present)','Rời cuộc họp','Đổi hình nền'],a:1,
+ e:'Chia sẻ màn hình giúp mọi người thấy đúng nội dung bạn đang trình bày.'},
+{d:5,t:'hotspot',svg:'word',q:'Bạn muốn mời bạn cùng nhóm vào chỉnh sửa tài liệu này. Nhấp vào nút phù hợp.',a:9,
+ e:'Nút Chia sẻ (Share) ở góc phải cho phép nhập email người nhận và chọn quyền: chỉnh sửa, nhận xét hoặc chỉ xem.'},
 
-/* ---------- 6. AN TOÀN & BẢO MẬT ---------- */
-{d:6,t:'multi',q:'Bạn vừa tạo tài khoản Google và dùng nó để đăng nhập vào nhiều ứng dụng khác bằng Đăng nhập một lần (SSO).\nBa lợi ích của SSO là gì?',
- o:['Chỉ cần nhớ một bộ thông tin đăng nhập','SSO thuộc sở hữu và do chính phủ vận hành','Đăng nhập một lần là truy cập được nhiều dịch vụ liên kết (email, lưu trữ, ứng dụng)','Tài khoản SSO không bao giờ bị tấn công','Ít mật khẩu phải quản lý nên dễ áp dụng mật khẩu mạnh và 2FA cho tài khoản chính'],a:[0,2,4],
- e:'SSO tiện và giảm "mệt mỏi mật khẩu". Rủi ro: lộ tài khoản chính thì mọi dịch vụ liên kết đều bị ảnh hưởng, nên bắt buộc bật xác thực hai yếu tố.'},
-{d:6,t:'single',q:'Mật khẩu nào sau đây mạnh nhất?',
- o:['12345678','matkhau','Hoa1990','T!m3-Bi3n#Xanh_27'],a:3,
- e:'Mật khẩu mạnh: từ 12 ký tự trở lên, có chữ hoa, chữ thường, số, ký tự đặc biệt, không chứa tên hoặc ngày sinh. Nên dùng trình quản lý mật khẩu.'},
-{d:6,t:'match',q:'Ghép mỗi mối đe dọa an ninh mạng với mô tả phù hợp.',
- items:['Phishing (lừa đảo)','Ransomware (mã độc tống tiền)','Trojan','Spyware (phần mềm gián điệp)','Firewall (tường lửa)'],
- targets:['Email hoặc tin nhắn giả mạo ngân hàng, dụ bạn nhập mật khẩu.','Mã hóa toàn bộ dữ liệu và đòi tiền chuộc để giải mã.','Phần mềm trông hữu ích nhưng ẩn chứa mã độc bên trong.','Âm thầm theo dõi, thu thập thao tác và thông tin của người dùng.'],a:[0,1,2,3],
- e:'Firewall là công cụ bảo vệ (lọc lưu lượng mạng), không phải mối đe dọa.'},
-{d:6,t:'single',q:'Ví dụ nào sau đây là xác thực hai yếu tố (2FA)?',
- o:['Nhập mật khẩu hai lần','Nhập mật khẩu, sau đó nhập mã OTP gửi về điện thoại','Trả lời hai câu hỏi bảo mật','Dùng hai mật khẩu khác nhau cho hai tài khoản'],a:1,
- e:'2FA kết hợp hai LOẠI yếu tố khác nhau: thứ bạn biết (mật khẩu), thứ bạn có (điện thoại, khóa bảo mật), thứ thuộc về bạn (vân tay, khuôn mặt). Hai câu hỏi bảo mật vẫn chỉ là một loại.'},
-{d:6,t:'yesno',q:'Đối với mỗi phát biểu về sử dụng Wi-Fi công cộng, hãy chọn Yes nếu đúng hoặc No nếu sai.',
- rows:['Không nên đăng nhập ngân hàng trực tuyến khi dùng Wi-Fi công cộng không mật khẩu.','Dùng VPN giúp mã hóa kết nối khi ở Wi-Fi công cộng.','Mạng Wi-Fi có tên giống tên quán cà phê chắc chắn là mạng chính chủ.','Nên tắt tính năng tự động kết nối với Wi-Fi lạ trên thiết bị.'],a:[1,1,0,1],
- e:'Kẻ gian có thể tạo điểm phát Wi-Fi giả mạo trùng tên (evil twin). Hãy hỏi nhân viên tên mạng chính xác và dùng VPN khi cần.'},
-{d:6,t:'hotspot',svg:'browser',q:'Bạn muốn kiểm tra kết nối bảo mật và chứng chỉ (SSL/TLS) của trang web đang mở. Hãy nhấp vào vị trí phù hợp trên trình duyệt.',a:3,
- e:'Biểu tượng ổ khóa (hoặc biểu tượng thông tin trang) ở đầu thanh địa chỉ hiển thị trạng thái kết nối, chứng chỉ và quyền của trang.'},
-{d:6,t:'single',q:'Dấu hiệu nào cho thấy một email có thể là lừa đảo (phishing)?',
- o:['Email từ đồng nghiệp với nội dung đúng như đã hẹn','Địa chỉ người gửi sai chính tả tên miền, giục bạn "xác minh tài khoản trong 24 giờ" qua đường link','Email có chữ ký đầy đủ và số điện thoại công ty bạn đã biết','Thư mời họp từ hệ thống lịch nội bộ'],a:1,
- e:'Dấu hiệu phishing: tên miền giả (vietcombank → vietcornbank), tạo áp lực thời gian, yêu cầu nhập mật khẩu/OTP, đường link lạ. Rê chuột lên link để xem địa chỉ thật trước khi nhấp.'},
+/* ======================= 7. AN TOÀN & BẢO MẬT (16) ======================= */
+{d:6,t:'multi',q:'Bạn vừa đăng ký một tài khoản Google. Tài khoản mới của bạn dùng Đăng nhập một lần (SSO).\nBa lợi ích của Đăng nhập một lần (SSO) là gì?',
+ o:['Bạn chỉ cần nhớ một bộ thông tin đăng nhập','SSO thuộc sở hữu và do chính phủ điều hành','Đăng nhập một lần là dùng được email, lưu trữ tài liệu, ứng dụng và trang web liên kết','Tài khoản SSO không bao giờ bị tấn công','Ít mật khẩu hơn nên dễ bảo vệ tài khoản chính bằng mật khẩu mạnh và xác thực 2 bước'],a:[0,2,4],
+ e:'SSO tiện lợi, nhưng nếu lộ tài khoản chính thì mọi dịch vụ liên kết đều bị ảnh hưởng, nên phải bật xác thực 2 bước.'},
+{d:6,t:'single',q:'Mật khẩu nào mạnh nhất?',
+ o:['12345678','matkhau','Nam2015','Ca!Heo-Xanh_Bay#27'],a:3,
+ e:'Mật khẩu mạnh: dài từ 12 ký tự, có chữ hoa, chữ thường, số và ký hiệu, không chứa tên hoặc ngày sinh.'},
+{d:6,t:'match',q:'Ghép mỗi mối nguy trên mạng với mô tả phù hợp.',
+ items:['Lừa đảo (Phishing)','Mã độc tống tiền (Ransomware)','Trojan','Phần mềm gián điệp (Spyware)','Tường lửa (Firewall)'],
+ targets:['Tin nhắn giả mạo dụ bạn nhập mật khẩu','Khóa toàn bộ tệp và đòi tiền chuộc','Trò chơi "miễn phí" nhưng giấu mã độc bên trong','Lén theo dõi những gì bạn làm trên máy'],a:[0,1,2,3],
+ e:'Tường lửa là công cụ bảo vệ, không phải mối nguy.'},
+{d:6,t:'single',q:'Ví dụ nào là xác thực hai yếu tố (2FA)?',
+ o:['Nhập mật khẩu hai lần','Nhập mật khẩu, sau đó nhập mã gửi về điện thoại','Trả lời hai câu hỏi bí mật','Có hai mật khẩu cho hai tài khoản'],a:1,
+ e:'2FA kết hợp hai loại khác nhau: thứ bạn biết (mật khẩu) + thứ bạn có (điện thoại) hoặc thứ thuộc về bạn (vân tay).'},
+{d:6,t:'yesno',q:'Với mỗi phát biểu về Wi-Fi công cộng (quán cà phê, trung tâm thương mại), hãy chọn Yes nếu đúng hoặc No nếu sai.',
+ rows:['Không nên đăng nhập tài khoản quan trọng khi dùng Wi-Fi công cộng không mật khẩu.','VPN giúp mã hóa kết nối khi dùng Wi-Fi công cộng.','Wi-Fi có tên giống tên quán chắc chắn là của quán.','Nên tắt tự động kết nối với Wi-Fi lạ.'],a:[1,1,0,1],
+ e:'Kẻ xấu có thể phát Wi-Fi giả trùng tên. Hãy hỏi nhân viên đúng tên mạng.'},
+{d:6,t:'hotspot',svg:'browser',q:'Bạn muốn kiểm tra trang web có kết nối bảo mật hay không. Nhấp vào vị trí phù hợp trên trình duyệt.',a:3,
+ e:'Biểu tượng ổ khóa ở đầu thanh địa chỉ cho biết kết nối có được mã hóa không và hiển thị thông tin chứng chỉ của trang.'},
+{d:6,t:'single',q:'Dấu hiệu nào cho thấy email có thể là lừa đảo?',
+ o:['Email của thầy cô gửi đúng lịch học đã báo','Địa chỉ người gửi lạ, viết sai tên, giục bạn "đăng nhập trong 24 giờ kẻo mất tài khoản" qua đường link','Email có chữ ký và số điện thoại trường','Thông báo lịch họp từ lịch của lớp'],a:1,
+ e:'Lừa đảo thường: người gửi lạ hoặc giả tên, tạo cảm giác gấp gáp, đòi mật khẩu/mã OTP, có đường link lạ.'},
 {d:6,t:'single',q:'Quy tắc sao lưu 3-2-1 nghĩa là gì?',
- o:['3 mật khẩu, 2 tài khoản, 1 thiết bị','3 bản sao dữ liệu, trên 2 loại phương tiện lưu trữ khác nhau, 1 bản để ở nơi khác (offsite / đám mây)','Sao lưu 3 lần mỗi ngày, giữ 2 ngày, xóa sau 1 tuần','3 ổ cứng gắn trong cùng 1 máy tính'],a:1,
- e:'Quy tắc 3-2-1 giúp dữ liệu sống sót qua hỏng ổ cứng, mất máy, cháy nổ hay ransomware.'},
-{d:6,t:'multi',q:'Hai biện pháp nào giúp bảo vệ dữ liệu nếu điện thoại của bạn bị mất?',
- o:['Bật khóa màn hình bằng mã PIN / vân tay / khuôn mặt','Bật Tìm thiết bị (Find My Device / Find My iPhone) để định vị và xóa dữ liệu từ xa','Lưu mật khẩu vào ghi chú trên màn hình chính','Tắt mọi bản cập nhật hệ điều hành','Dán giấy ghi mật khẩu sau ốp lưng'],a:[0,1],
- e:'Khóa màn hình ngăn người lạ truy cập; tính năng tìm thiết bị cho phép định vị, khóa và xóa dữ liệu từ xa.'},
-{d:6,t:'single',q:'Chữ "S" trong HTTPS có ý nghĩa gì?',
- o:['Speed: tốc độ tải nhanh hơn','Secure: dữ liệu truyền giữa trình duyệt và máy chủ được mã hóa','Server: trang chạy trên máy chủ riêng','Search: trang đã được công cụ tìm kiếm xác minh'],a:1,
- e:'HTTPS mã hóa kết nối bằng TLS. Lưu ý: HTTPS chỉ bảo đảm đường truyền được mã hóa, không bảo đảm website đó đáng tin. Trang lừa đảo cũng có thể dùng HTTPS.'},
-{d:6,t:'yesno',q:'Đối với mỗi phát biểu về quyền riêng tư của ứng dụng, hãy chọn Yes nếu đúng hoặc No nếu sai.',
- rows:['Ứng dụng đèn pin yêu cầu quyền truy cập danh bạ là dấu hiệu đáng ngờ.','Nên đọc và điều chỉnh quyền (permissions) khi cài ứng dụng mới.','Có phần mềm diệt virus thì an toàn tuyệt đối, không cần cập nhật.','Nên tải ứng dụng từ kho chính thức như Google Play, App Store.'],a:[1,1,0,1],
- e:'Chỉ cấp quyền ứng dụng thật sự cần. Phần mềm diệt virus phải được cập nhật thường xuyên mới nhận diện được mã độc mới, và không có giải pháp nào an toàn tuyệt đối.'},
-{d:6,t:'single',q:'Bạn nhận được tin nhắn: "Bạn đã trúng thưởng iPhone, nhấp vào link và nhập số thẻ ngân hàng để nhận quà". Bạn nên làm gì?',
- o:['Nhập thông tin nhanh trước khi hết hạn','Chuyển tiếp cho bạn bè cùng nhận','Không nhấp link, xóa tin nhắn và báo cáo lừa đảo','Trả lời tin nhắn để hỏi thêm'],a:2,
- e:'Đây là lừa đảo điển hình (smishing). Không nhấp link, không cung cấp thông tin thẻ/OTP; báo cáo cho nhà mạng hoặc cơ quan chức năng.'}
+ o:['3 mật khẩu, 2 tài khoản, 1 máy','3 bản sao dữ liệu, trên 2 loại thiết bị lưu trữ, 1 bản để ở nơi khác (như đám mây)','Sao lưu 3 lần mỗi ngày','3 ổ cứng trong 1 máy'],a:1,
+ e:'Quy tắc 3-2-1 giúp không mất dữ liệu khi hỏng máy, mất máy hay bị mã độc.'},
+{d:6,t:'multi',q:'Hai cách nào giúp bảo vệ dữ liệu nếu bạn làm mất điện thoại?',
+ o:['Đặt khóa màn hình bằng mã PIN, vân tay hoặc khuôn mặt','Bật tính năng Tìm thiết bị (Find My Device / Find My iPhone)','Ghi mật khẩu dán sau ốp lưng','Tắt mọi bản cập nhật','Để điện thoại không khóa cho tiện'],a:[0,1],
+ e:'Khóa màn hình chặn người lạ; Tìm thiết bị giúp định vị, khóa và xóa dữ liệu từ xa.'},
+{d:6,t:'single',q:'Chữ "S" trong HTTPS nghĩa là gì?',
+ o:['Speed: nhanh hơn','Secure: dữ liệu được mã hóa khi truyền đi','Server: máy chủ riêng','Search: đã được Google kiểm tra'],a:1,
+ e:'HTTPS mã hóa đường truyền, nhưng không đảm bảo trang đó đáng tin. Trang lừa đảo cũng có thể dùng HTTPS.'},
+{d:6,t:'yesno',q:'Với mỗi phát biểu về quyền của ứng dụng, hãy chọn Yes nếu đúng hoặc No nếu sai.',
+ rows:['Ứng dụng đèn pin đòi xem danh bạ là đáng ngờ.','Nên xem lại các quyền khi cài ứng dụng mới.','Có phần mềm diệt virus là an toàn tuyệt đối, không cần cập nhật.','Nên tải ứng dụng từ Google Play hoặc App Store.'],a:[1,1,0,1],
+ e:'Chỉ cấp quyền mà ứng dụng thật sự cần. Phần mềm diệt virus phải được cập nhật thường xuyên.'},
+{d:6,t:'single',q:'Bạn nhận tin nhắn: "Chúc mừng bạn trúng thưởng điện thoại! Bấm link và nhập số thẻ ngân hàng của bố mẹ để nhận quà". Bạn nên làm gì?',
+ o:['Nhập ngay kẻo hết hạn','Gửi cho bạn bè cùng nhận','Không bấm link, báo bố mẹ và xóa tin nhắn','Nhắn lại hỏi thêm'],a:2,
+ e:'Đây là lừa đảo. Không bấm link, không cung cấp thông tin thẻ hay mã OTP; báo người lớn.'},
+{d:6,t:'single',q:'Một người lạ quen trên game online xin địa chỉ nhà và ảnh của bạn. Bạn nên làm gì?',
+ o:['Gửi vì đã chơi game cùng nhau lâu','Không cung cấp, chặn người đó và kể với bố mẹ hoặc thầy cô','Gửi ảnh nhưng không gửi địa chỉ','Hẹn gặp ngoài đời để làm quen'],a:1,
+ e:'Không chia sẻ thông tin cá nhân với người quen qua mạng. Luôn kể với người lớn tin cậy khi có ai đó khiến bạn thấy lo lắng.'},
+{d:6,t:'multi',q:'Ba thông tin nào KHÔNG nên đăng công khai trên mạng?',
+ o:['Địa chỉ nhà','Mật khẩu','Số điện thoại','Món ăn yêu thích','Môn thể thao bạn thích'],a:[0,1,2],
+ e:'Địa chỉ, số điện thoại, mật khẩu, tên trường, lịch đi lại là thông tin cá nhân nhạy cảm, kẻ xấu có thể lợi dụng.'},
+{d:6,t:'single',q:'Tư thế nào đúng khi ngồi dùng máy tính lâu?',
+ o:['Màn hình cách mắt khoảng 50–70 cm, mép trên màn hình ngang tầm mắt, lưng thẳng','Cúi sát màn hình','Nằm trên giường dùng laptop','Đặt màn hình thật cao, phải ngửa cổ'],a:0,
+ e:'Ngồi đúng tư thế giúp tránh đau cổ, mỏi mắt. Chân đặt phẳng trên sàn, khuỷu tay vuông góc khi gõ phím.'},
+{d:6,t:'single',q:'Phần mềm diệt virus báo tệp bạn vừa tải về có mã độc. Bạn nên làm gì?',
+ o:['Vẫn mở tệp xem thử','Không mở, để phần mềm cách ly (Quarantine) hoặc xóa tệp','Gửi tệp cho bạn bè kiểm tra','Tắt phần mềm diệt virus'],a:1,
+ e:'Cách ly giữ tệp ở nơi an toàn, không chạy được. Không tắt phần mềm bảo vệ để mở tệp đáng ngờ.'}
 ];
-BANK.forEach((q,i)=>{q.id=26101+i});
+BANK.forEach((q,i)=>{q.id=52001+i});
 const QM={};BANK.forEach(q=>QM[q.id]=q);
 
 /* ===================== HÌNH MINH HỌA (SVG) ===================== */
@@ -621,11 +679,49 @@ const SVG={
   ${hs(8,'Đồng hồ và lịch',hit(600,8,76,48)+'<text class="hw-text" x="638" y="29" text-anchor="middle">09:41</text><text class="hw-text" x="638" y="47" text-anchor="middle" font-size="11">10/10/2026</text>')}
   </svg>`;
  },
+ mail(){
+  const row=(r,label,y,content)=>hs(r,label,hit(10,y,84,34)+`<rect class="hw-ibtn" x="14" y="${y+3}" width="76" height="28" rx="3"/><text class="hw-text" x="52" y="${y+22}" text-anchor="middle">${label.split(' ')[0]}</text>`)+`<rect class="hw-field" x="100" y="${y+1}" width="566" height="32" rx="3" stroke="var(--hw-edge)"/><text class="hw-text" x="112" y="${y+22}">${content}</text>`;
+  return `<svg viewBox="0 0 680 290" role="img" aria-label="Cửa sổ soạn thư điện tử">
+  <rect class="hw-plain" x="0" y="0" width="680" height="290"/>
+  <rect class="hw-field" x="0" y="0" width="680" height="48"/>
+  ${hs(0,'Gửi',hit(8,5,96,38)+'<rect class="hw-blue" x="14" y="10" width="84" height="28" rx="4"/><text class="hw-btn-text" x="56" y="29">Gửi</text>')}
+  ${hs(4,'Đính kèm tệp',hit(112,5,118,38)+'<path class="hw-ico" d="M136 31 l9 -9 a4 4 0 0 1 6 6 l-11 11 a2.5 2.5 0 0 1 -3.5 -3.5 l9 -9"/><text class="hw-text" x="158" y="29">Đính kèm</text>')}
+  <text class="hw-text" x="250" y="29" opacity=".55">Định dạng   ·   Chèn   ·   Tùy chọn</text>
+  ${row(1,'Đến (To)',56,'co.huong@truong.edu.vn')}
+  ${row(2,'Cc',96,'')}
+  ${row(3,'Bcc',136,'')}
+  ${hs(5,'Tiêu đề',hit(10,176,656,34)+'<text class="hw-text" x="52" y="198" text-anchor="middle">Tiêu đề</text><rect class="hw-field" x="100" y="177" width="566" height="32" rx="3" stroke="var(--hw-edge)"/><text class="hw-text" x="112" y="198">Bài tập Khoa học – Nhóm 3</text>')}
+  <rect class="hw-field" x="14" y="220" width="652" height="60" rx="3" stroke="var(--hw-edge)"/>
+  <text class="hw-text" x="26" y="244">Em chào cô ạ,</text><text class="hw-text" x="26" y="264">Em gửi cô bài tập Khoa học của nhóm 3. Em cảm ơn cô.</text>
+  </svg>`;
+ },
+ word(){
+  return `<svg viewBox="0 0 680 156" role="img" aria-label="Thanh công cụ trình soạn thảo văn bản">
+  <rect class="hw-plain" x="0" y="0" width="680" height="156"/>
+  <text class="hw-text" x="16" y="21">Tệp</text><text class="hw-text" x="60" y="21" font-weight="700">Trang đầu</text><text class="hw-text" x="140" y="21">Chèn</text><text class="hw-text" x="190" y="21">Thiết kế</text><text class="hw-text" x="258" y="21">Bố cục</text><text class="hw-text" x="316" y="21">Xem lại</text>
+  <rect class="hw-blue" x="60" y="26" width="66" height="3"/>
+  <rect class="hw-field" x="0" y="32" width="680" height="52"/>
+  ${hs(0,'In đậm (Bold)',hit(10,38,34,40)+'<text class="hw-big" x="27" y="65" font-weight="800">B</text>')}
+  ${hs(1,'In nghiêng (Italic)',hit(46,38,34,40)+'<text class="hw-big" x="63" y="65" font-style="italic" font-family="Georgia,serif">I</text>')}
+  ${hs(2,'Gạch chân (Underline)',hit(82,38,34,40)+'<text class="hw-big" x="99" y="63">U</text><rect class="hw-fill" x="91" y="67" width="16" height="2"/>')}
+  <rect class="hw-fill" x="124" y="42" width="1" height="32" opacity=".3"/>
+  ${hs(3,'Căn trái',hit(130,38,34,40)+'<path class="hw-ico" d="M137 48 h20 M137 54 h13 M137 60 h20 M137 66 h11"/>')}
+  ${hs(4,'Căn giữa',hit(166,38,34,40)+'<path class="hw-ico" d="M173 48 h20 M176.5 54 h13 M173 60 h20 M177.5 66 h11"/>')}
+  ${hs(5,'Căn phải',hit(202,38,34,40)+'<path class="hw-ico" d="M209 48 h20 M216 54 h13 M209 60 h20 M218 66 h11"/>')}
+  ${hs(6,'Danh sách dấu đầu dòng',hit(244,38,36,40)+'<circle class="hw-fill" cx="252" cy="49" r="2"/><circle class="hw-fill" cx="252" cy="57" r="2"/><circle class="hw-fill" cx="252" cy="65" r="2"/><path class="hw-ico" d="M258 49 h15 M258 57 h15 M258 65 h15"/>')}
+  ${hs(7,'Chèn ảnh',hit(288,38,38,40)+'<rect class="hw-ico" x="294" y="45" width="26" height="22" rx="2"/><path class="hw-ico" d="M297 63 l7 -8 l5 5 l4 -4 l5 7"/><circle class="hw-fill" cx="313" cy="51" r="2"/>')}
+  ${hs(8,'Bình luận',hit(520,38,46,40)+'<rect class="hw-ico" x="530" y="46" width="26" height="18" rx="3"/><path class="hw-ico" d="M536 64 l-2 6 l7 -6"/>')}
+  ${hs(9,'Chia sẻ',hit(572,38,100,40)+'<rect class="hw-blue" x="578" y="44" width="88" height="28" rx="4"/><text class="hw-btn-text" x="622" y="63">Chia sẻ</text>')}
+  <rect class="hw-field" x="120" y="94" width="440" height="62" stroke="var(--hw-edge)"/>
+  <text class="hw-text" x="140" y="122" font-size="16" font-weight="600">Hệ Mặt Trời của chúng ta</text>
+  <rect class="hw-plain" x="140" y="134" width="390" height="5"/><rect class="hw-plain" x="140" y="145" width="320" height="5"/>
+  </svg>`;
+ },
  browser(){
   return `<svg viewBox="0 0 680 100" role="img" aria-label="Cửa sổ trình duyệt web">
   <rect class="hw-plain" x="0" y="0" width="680" height="100"/>
   <path class="hw-field" d="M14 40 V14 a6 6 0 0 1 6 -6 H206 a6 6 0 0 1 6 6 V40 Z"/>
-  <text class="hw-text" x="28" y="29">Khóa học IC3 GS6</text><text class="hw-text" x="190" y="29">×</text>
+  <text class="hw-text" x="28" y="29">Khóa học IC3 Spark</text><text class="hw-text" x="190" y="29">×</text>
   <rect class="hw-field" x="0" y="40" width="680" height="60"/>
   ${hs(0,'Quay lại',hit(6,52,30,36)+'<path class="hw-ico" d="M29 70 H14 M20 64 L14 70 L20 76"/>')}
   ${hs(1,'Tiến tới',hit(38,52,30,36)+'<path class="hw-ico" d="M45 70 H60 M54 64 L60 70 L54 76"/>')}
@@ -646,7 +742,7 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
 const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
 const fmt=sec=>{sec=Math.max(0,sec|0);const h=Math.floor(sec/3600),m=Math.floor(sec%3600/60),s=sec%60;return (h?h+':'+String(m).padStart(2,'0'):String(m).padStart(2,'0'))+':'+String(s).padStart(2,'0')};
 const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}},del(k){try{localStorage.removeItem(k)}catch(e){}}};
-const K={sess:'ic3gs6.l2.session',hist:'ic3gs6.l2.history',wrong:'ic3gs6.l2.wrong',font:'ic3gs6.l2.font'};
+const K={sess:'ic3spark.l2.session',hist:'ic3spark.l2.history',wrong:'ic3spark.l2.wrong',font:'ic3spark.l2.font',name:'ic3spark.l2.name'};
 const TEST_N=45, TEST_MIN=50, PASS=700, SCALES=[1,1.15,1.3];
 const MOVE='<svg class="ico mv" viewBox="0 0 24 24"><path d="M12 3v18M3 12h18M12 3 9.5 5.5M12 3l2.5 2.5M12 21l-2.5-2.5M12 21l2.5-2.5M3 12l2.5-2.5M3 12l2.5 2.5M21 12l-2.5-2.5M21 12l-2.5 2.5"/></svg>';
 
@@ -685,7 +781,7 @@ function newSession(mode,ids,title){
  if(!ids.length){toast('Không có câu hỏi phù hợp với lựa chọn của bạn.');return}
  const orders={},ans={};
  ids.forEach(id=>{const q=QM[id];ans[id]=blank(q);if(q.t==='match')orders[id]=shuffle(q.items.map((_,i)=>i))});
- S={mode,title,ids,cur:0,ans,orders,mark:{},skip:{},chk:{},elapsed:0,limit:mode==='test'?TEST_MIN*60:null,done:false,created:Date.now()};
+ S={mode,title,name:store.get(K.name,''),ids,cur:0,ans,orders,mark:{},skip:{},chk:{},elapsed:0,limit:mode==='test'?TEST_MIN*60:null,done:false,created:Date.now()};
  selItem=null;save();openExam();
 }
 function openExam(){show('exam');applyFont();if(!S.done)startTimer();else tick();renderQ()}
@@ -698,7 +794,7 @@ function startTimer(){
 }
 function stopTimer(){if(timerId){clearInterval(timerId);timerId=null}}
 function tick(){
- const t=$('#timer');
+ const t=$('#timer');$('#candName').textContent=S.name?'Thí sinh: '+S.name:'';
  $('#modeLabel').textContent=S.done?'Xem lại bài làm':(S.mode==='test'?'Thi thử · Testing mode':'Luyện tập · Training mode')+(S.title?' · '+S.title:'');
  if(S.done){t.textContent='Đúng '+S.grade.c+'/'+S.grade.n;t.classList.remove('low');return}
  if(S.limit){const r=S.limit-S.elapsed;t.textContent='Còn lại '+fmt(r);t.classList.toggle('low',r<=300)}
@@ -895,7 +991,7 @@ function showResult(){
  const cells=S.ids.map((id,i)=>(resFilter==='bad'&&g.res[i])?'':`<button type="button" class="qcell ${g.res[i]?'ok':'bad'}" data-review="${i}" title="Câu ${i+1} · ${esc(DOMAINS[QM[id].d])}">${i+1}</button>`).join('');
  $('#result').innerHTML=`<div class="page">
   <header class="score-head">
-   <div><p class="eyebrow">${train?'Kết quả luyện tập':'Kết quả thi thử'} · ${new Date(S.finished||Date.now()).toLocaleString('vi-VN')}</p>
+   <div><p class="eyebrow">${S.name?esc(S.name)+' · ':''}${train?'Kết quả luyện tập':'Kết quả thi thử'} · ${new Date(S.finished||Date.now()).toLocaleString('vi-VN')}</p>
    <div class="score">${g.score}<small> / 1000</small></div>
    <p style="margin:10px 0 0"><span class="pill ${pass?'ok':'bad'}">${pass?'Đạt':'Chưa đạt'}</span> <span class="foot-note">Ngưỡng đạt tham khảo ${PASS}/1000</span></p></div>
    <div class="row"><button class="btn btn-line" id="rHome" type="button">Về trang chủ</button><button class="btn" id="rReview" type="button">Xem lại bài làm</button>${wrongIds.length?`<button class="btn btn-end" id="rRetry" type="button">Luyện lại ${wrongIds.length} câu sai</button>`:''}</div>
@@ -924,12 +1020,13 @@ function renderHome(){
  if(sess){const k=sess.ids.filter(id=>answered(QM[id],sess.ans[id])).length;
   resume=`<div class="resume"><div><b>Bạn có bài ${sess.mode==='test'?'thi thử':'luyện tập'} đang làm dở</b><span class="foot-note">Câu ${sess.cur+1}/${sess.ids.length} · đã trả lời ${k} câu · ${sess.limit?'còn '+fmt(sess.limit-sess.elapsed):'đã làm '+fmt(sess.elapsed)}</span></div><div class="row"><button class="btn btn-danger" id="hDrop" type="button">Hủy bài làm</button><button class="btn" id="hResume" type="button">Tiếp tục làm bài</button></div></div>`}
  $('#home').innerHTML=`
- <div class="titlebar"><span class="brand">Phòng Luyện IC3 GS6</span><span class="mode">Level 2 · Ngân hàng ${BANK.length} câu</span></div>
+ <div class="titlebar"><span class="brand">IC3 GS6 Spark · Level 2</span><span class="mode">Ngân hàng ${BANK.length} câu hỏi</span></div>
  <div class="page">
   <header class="hero">
-   <p class="eyebrow">IC3 Digital Literacy GS6 · Level 2</p>
-   <h1>Luyện thi IC3 GS6 Level 2 theo đúng định dạng bài thi</h1>
-   <p class="lede">Giao diện mô phỏng phần mềm thi trên máy: thanh công cụ Trước / Đặt lại / Bỏ qua / Tiếp, đánh dấu xem lại, danh sách câu, đồng hồ đếm ngược. Đủ 5 dạng câu: một đáp án, nhiều đáp án, Yes/No, kéo-thả ghép cặp hoặc sắp xếp, và nhấp vào hình.</p>
+   <p class="eyebrow">IC3 Digital Literacy GS6 Spark · Level 2</p>
+   <h1>Luyện thi IC3 GS6 Spark Level 2 như thi thật</h1>
+   <p class="lede">Dành cho học sinh ôn thi chứng chỉ IC3 GS6 Spark Level 2. Giao diện giống phần mềm thi trên máy: nút Trước / Đặt lại / Bỏ qua / Tiếp, đánh dấu xem lại, danh sách câu, đồng hồ đếm ngược. Có đủ 5 dạng câu: một đáp án, nhiều đáp án, Yes/No, kéo-thả ghép cặp hoặc sắp xếp, và nhấp vào hình.</p>
+   <div class="row" style="margin-top:16px"><label for="cand">Họ tên thí sinh</label><input id="cand" type="text" maxlength="60" placeholder="Nhập họ tên để lưu vào kết quả" value="${esc(store.get(K.name,''))}" style="font:inherit;padding:7px 10px;border:1px solid var(--line-strong);border-radius:3px;background:var(--paper);color:var(--ink);min-width:0;flex:1 1 240px;max-width:360px"></div>
    <dl class="facts"><div><dt>Số câu mỗi đề</dt><dd>${TEST_N}</dd></div><div><dt>Thời gian</dt><dd>${TEST_MIN}<small> phút</small></dd></div><div><dt>Thang điểm</dt><dd>1000</dd></div><div><dt>Điểm cao nhất của bạn</dt><dd>${best==null?'–':best}</dd></div></dl>
   </header>
   ${resume}
@@ -961,8 +1058,9 @@ function renderHome(){
    ${hist.slice(0,15).map(h=>`<tr><td>${new Date(h.t).toLocaleString('vi-VN',{dateStyle:'short',timeStyle:'short'})}</td><td>${h.m==='test'?'Thi thử':'Luyện tập'}${h.title?' · '+esc(h.title):''}</td><td class="num">${h.c}/${h.n}</td><td class="num">${h.s}</td><td class="num">${fmt(h.sec)}</td><td><span class="pill ${h.s>=PASS?'ok':'bad'}">${h.s>=PASS?'Đạt':'Chưa đạt'}</span></td></tr>`).join('')}
    </tbody></table>`:'<div class="empty">Chưa có lượt làm bài nào. Kết quả mỗi lần thi thử hoặc luyện tập sẽ được lưu ở đây, trên trình duyệt này.</div>'}</div>
   </section>
-  <p class="foot-note">Câu hỏi được biên soạn theo khung năng lực IC3 GS6 Level 2 (7 lĩnh vực) để tự luyện tập; không phải đề thi chính thức của Certiport/IIG. Tiến độ và lịch sử chỉ lưu trên trình duyệt của bạn. Phím tắt khi làm bài: ← / → để chuyển câu.</p>
+  <p class="foot-note">Ngân hàng 100 câu được biên soạn theo 7 lĩnh vực của IC3 GS6 (Cơ bản về công nghệ, Công dân số, Quản lý thông tin, Tạo nội dung, Giao tiếp, Cộng tác, An toàn &amp; bảo mật) ở mức Level 2, với tình huống gần gũi học sinh. Đây là tài liệu tự luyện, không phải đề thi chính thức của Certiport/IIG. Tiến độ và lịch sử chỉ lưu trên trình duyệt của bạn. Phím tắt khi làm bài: ← / → để chuyển câu.</p>
  </div>`;
+ $('#cand').oninput=e=>store.set(K.name,e.target.value.trim());
  $('#hTest').onclick=()=>newSession('test',pickTest(TEST_N),'');
  $('#hTrain').onclick=()=>{
   const ds=DOMAINS.map((_,i)=>$('#dm'+i).checked);
