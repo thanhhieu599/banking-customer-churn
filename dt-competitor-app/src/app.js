@@ -1050,7 +1050,7 @@ function exportXlsx() {
 }
 
 // ---------- Điều hướng & render ----------
-const VIEWS = { 'tong-quan': [viewOverview, chartsOverview], 'mo-ta': [viewDescriptive, chartsDescriptive], 'chan-doan': [viewDiagnostic, chartsDiagnostic], 'du-bao': [viewPredictive, chartsPredictive], 'de-xuat': [viewPrescriptive, chartsPrescriptive], 'du-lieu': [viewData, null] };
+const VIEWS = { 'tong-quan': [viewOverview, chartsOverview], 'dashboard': [viewDashboard, chartsDashboard], 'mo-ta': [viewDescriptive, chartsDescriptive], 'chan-doan': [viewDiagnostic, chartsDiagnostic], 'du-bao': [viewPredictive, chartsPredictive], 'de-xuat': [viewPrescriptive, chartsPrescriptive], 'du-lieu': [viewData, null] };
 function render() {
   if (!Store.ready) return;
   Store.stale = false;
