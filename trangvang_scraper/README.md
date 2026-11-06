@@ -1,23 +1,48 @@
-# Công cụ cào danh bạ doanh nghiệp (Trang Vàng)
+# Công cụ thu thập danh bạ doanh nghiệp (Trang Vàng)
 
-Luồng chạy giống hệt thao tác tay:
+Lấy **Tên, Địa chỉ, Điện thoại, Email, Website** của các công ty theo Lĩnh vực > Phân ngành > Công ty, xuất ra Excel.
 
+> Trang Vàng **chặn truy cập tự động** (lỗi 403 / "connection forcibly closed"). Vì vậy cách chính là
+> **người mở trang như bình thường, công cụ chỉ đọc dữ liệu trên trang đang mở**: Cách A hoặc Cách B.
+> Cách C (máy tự cào) chỉ dùng được với website cho phép truy cập tự động; khi bị chặn, công cụ tự dừng để tránh bị khóa IP.
+
+## Cách A (khuyên dùng): Nút thu thập trên Chrome/Edge
+
+Không cần cài Python.
+
+1. Mở file `cai_dat_bookmarklet.html` bằng Chrome và **kéo nút vàng "📥 Thu thập D&T" lên thanh dấu trang**.
+2. Vào Trang Vàng, mở trang danh sách công ty của một phân ngành rồi **bấm nút**. Góc phải hiện "Đã có N công ty".
+3. Sang trang 2, 3… và các phân ngành khác, bấm nút ở mỗi trang. Dữ liệu cộng dồn, không trùng.
+4. Muốn lấy email: vào trang chi tiết công ty và bấm nút. Trang danh sách thường không hiện email.
+5. Bấm **Tải Excel (CSV)** để tải file.
+
+Năng suất: ~20 công ty/lần bấm, một người làm khoảng 1.000+ công ty/giờ.
+
+## Cách B: Lưu trang (Ctrl+S) rồi cho Python đọc
+
+Hợp với việc giao cho nhân viên hoặc cộng tác viên, sau đó gom file lại một chỗ:
+
+1. Ở mỗi trang danh sách hoặc trang chi tiết công ty, bấm `Ctrl+S`, chọn **"Webpage, HTML only"** và lưu vào thư mục `trang_da_luu`.
+2. Chạy:
+
+```bash
+pip install -r requirements.txt
 ```
-Trang tổng lĩnh vực ──► Lĩnh vực (Hóa chất, Bảo hộ lao động, ...)
-                          └─► Phân ngành 1 ──► trang 1, 2, 3... ──► Công ty A, B, C (vào từng trang chi tiết)
-                          └─► Phân ngành 2 ──► ...
-                       ──► Lĩnh vực tiếp theo ...
+```bash
+python scraper.py import-html --dir trang_da_luu --sector "Hóa chất" --out hoa_chat.xlsx
 ```
 
-Mỗi công ty lấy: **Tên, Địa chỉ, Điện thoại, Email, Website** + Lĩnh vực, Phân ngành, Link nguồn.
+Chạy lại sau khi lưu thêm trang: không trùng, và trang chi tiết tự bổ sung email vào công ty đã có.
 
-## 1. Cài đặt (1 lần)
+## Cách C: Máy tự cào (chỉ khi website cho phép)
+
+### Cài đặt
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## 2. Chạy
+### Chạy
 
 **Chạy thử 20 công ty trước** để kiểm tra dữ liệu ra đúng:
 
@@ -59,7 +84,6 @@ Muốn quét lại danh sách phân ngành (khi website thêm ngành mới) thì
 | `--max-pages 500` | Giới hạn số trang mỗi phân ngành |
 | `--max-companies N` | Dừng sau N công ty (chạy thử) |
 | `--only-sector "Hóa chất"` | Chỉ lấy lĩnh vực có tên chứa chuỗi này (dùng nhiều lần được) |
-| `--playwright` | Dùng trình duyệt thật khi web chặn bot (cần `pip install playwright && playwright install chromium`) |
 | `--sector-pattern "/nganh/"` | Regex URL trang lĩnh vực nếu công ty không tự nhận diện đúng |
 
 ## 5. Cách nhận diện dữ liệu

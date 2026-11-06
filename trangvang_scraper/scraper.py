@@ -62,21 +62,20 @@ HEADERS = {
 # ---------------------------------------------------------------------------
 # Tải trang
 # ---------------------------------------------------------------------------
-class Fetcher:
-    """requests + nghỉ giữa các lần gọi + thử lại khi lỗi 429/5xx."""
+class Blocked(Exception):
+    """Website từ chối truy cập tự động."""
 
-    def __init__(self, delay: float = 2.0, retries: int = 4, use_playwright: bool = False):
+
+class Fetcher:
+    """Tải trang bằng HTTP thường, nghỉ giữa các lần gọi, thử lại khi lỗi tạm thời.
+    Nếu website chặn (403 / ngắt kết nối) thì dừng ngay, không cố truy cập tiếp."""
+
+    def __init__(self, delay: float = 2.0, retries: int = 3):
         self.delay = delay
         self.retries = retries
         self.session = requests.Session()
         self.session.headers.update(HEADERS)
         self._last = 0.0
-        self._pw = self._browser = self._page = None
-        if use_playwright:
-            from playwright.sync_api import sync_playwright  # cài thêm khi cần
-            self._pw = sync_playwright().start()
-            self._browser = self._pw.chromium.launch()
-            self._page = self._browser.new_page(extra_http_headers=HEADERS)
 
     def _wait(self):
         gap = self.delay * random.uniform(0.7, 1.4) - (time.time() - self._last)
@@ -85,32 +84,34 @@ class Fetcher:
         self._last = time.time()
 
     def get(self, url: str) -> str | None:
+        blocked = 0
         for attempt in range(1, self.retries + 1):
             self._wait()
             try:
-                if self._page:
-                    resp = self._page.goto(url, wait_until="domcontentloaded", timeout=45000)
-                    status = resp.status if resp else 0
-                    html = self._page.content()
-                else:
-                    r = self.session.get(url, timeout=30)
-                    status, html = r.status_code, r.text
-                if status == 200:
-                    return html
-                if status == 404:
+                r = self.session.get(url, timeout=30)
+                if r.status_code == 200:
+                    return r.text
+                if r.status_code == 404:
                     log.warning("404: %s", url)
                     return None
-                log.warning("HTTP %s (lần %d): %s", status, attempt, url)
-            except Exception as e:  # mạng chập chờn
+                if r.status_code in (401, 403):
+                    blocked += 1
+                log.warning("HTTP %s (lần %d): %s", r.status_code, attempt, url)
+            except requests.exceptions.ConnectionError as e:
+                msg = str(e)
+                if "10054" in msg or "reset" in msg.lower() or "aborted" in msg.lower():
+                    blocked += 1
+                log.warning("Lỗi kết nối (lần %d) %s: %s", attempt, url, e)
+            except requests.RequestException as e:
                 log.warning("Lỗi tải (lần %d) %s: %s", attempt, url, e)
+            if blocked >= 2:
+                raise Blocked(url)
             time.sleep(min(60, 2 ** attempt * 2))
         log.error("Bỏ qua sau %d lần thử: %s", self.retries, url)
         return None
 
     def close(self):
-        if self._browser:
-            self._browser.close()
-            self._pw.stop()
+        pass
 
 
 # ---------------------------------------------------------------------------
@@ -284,8 +285,11 @@ def _norm_phone(p: str) -> str:
 
 def parse_company(html: str, url: str) -> Company:
     soup = BeautifulSoup(html, "html.parser")
-    c = Company(url=url, name=page_title(soup))
-    block = _main_block(soup)
+    return parse_block(_main_block(soup), url, page_title(soup))
+
+
+def parse_block(block: Tag, url: str, name: str) -> Company:
+    c = Company(url=url, name=name)
 
     # --- Điện thoại: ưu tiên link tel:, bỏ số fax ---
     for a in block.find_all("a", href=re.compile(r"^tel:", re.I)):
@@ -365,6 +369,82 @@ def parse_company(html: str, url: str) -> Company:
     return c
 
 
+def parse_listing_cards(html: str, base: str) -> list[Company]:
+    """Bóc từng thẻ công ty trên trang danh sách phân ngành (hình 4).
+    Thẻ = khối lớn nhất bao quanh link /listings/<id> mà không chứa công ty khác."""
+    soup = BeautifulSoup(html, "html.parser")
+    out, seen = [], set()
+    for a in soup.find_all("a", href=LISTING_RE):
+        url = norm_url(base, a["href"]).split("#")[0]
+        lid = listing_id(url)
+        if lid in seen:
+            continue
+        card = a
+        while isinstance(card.parent, Tag) and card.parent.name not in ("body", "html"):
+            ids = {listing_id(x["href"]) for x in card.parent.find_all("a", href=LISTING_RE)}
+            if len(ids) > 1:
+                break
+            card = card.parent
+        if card is a:
+            continue
+        # Tên: link /listings/ nằm trong thẻ tiêu đề, nếu không thì link có chữ dài nhất
+        title = card.find(["h1", "h2", "h3", "h4"])
+        name = clean(title.get_text()) if title else ""
+        if not name:
+            name = max((clean(x.get_text()) for x in card.find_all("a", href=LISTING_RE)), key=len, default="")
+        name = re.sub(r"^\d+\s+", "", name)  # bỏ số thứ tự "1 Hóa Chất Kemic..."
+        seen.add(lid)
+        out.append(parse_block(card, url, name))
+    return out
+
+
+def saved_page_url(html: str) -> str:
+    """Link gốc của trang lưu bằng Ctrl+S (Chrome/Edge ghi trong comment 'saved from url')."""
+    m = re.search(r"saved from url=\(\d+\)(\S+?)\s*-->", html[:3000])
+    if m:
+        return m.group(1)
+    soup = BeautifulSoup(html[:200000], "html.parser")
+    for sel in (("link", {"rel": "canonical"}, "href"), ("meta", {"property": "og:url"}, "content")):
+        tag = soup.find(sel[0], attrs=sel[1])
+        if tag and tag.get(sel[2]):
+            return tag[sel[2]]
+    return "https://trangvangvietnam.com/"
+
+
+def category_name_of(html: str) -> str:
+    soup = BeautifulSoup(html, "html.parser")
+    inp = soup.find("input", attrs={"value": True, "type": re.compile("text|search", re.I)})
+    if inp and len(clean(inp["value"])) > 3:
+        return clean(inp["value"])
+    return page_title(soup)
+
+
+def import_html(store: "Store", folder: str, sector: str = "") -> int:
+    """Đọc mọi file .html/.htm trong thư mục (trang danh sách hoặc trang chi tiết đã lưu)."""
+    import glob
+    import os
+    files = sorted(glob.glob(os.path.join(folder, "**", "*.htm*"), recursive=True))
+    if not files:
+        log.error("Không thấy file .html nào trong %s", folder)
+        return 0
+    total = 0
+    for f in files:
+        with open(f, encoding="utf-8", errors="ignore") as fh:
+            html = fh.read()
+        base = saved_page_url(html)
+        if LISTING_RE.search(base):  # trang chi tiết 1 công ty
+            companies = [parse_company(html, base)]
+            cat = ""
+        else:                         # trang danh sách phân ngành
+            companies = parse_listing_cards(html, base)
+            cat = category_name_of(html)
+        for c in companies:
+            store.upsert_company(c, sector, cat)
+        total += len(companies)
+        log.info("%s: %d công ty", os.path.basename(f), len(companies))
+    return total
+
+
 # ---------------------------------------------------------------------------
 # Lưu trữ / tiến độ
 # ---------------------------------------------------------------------------
@@ -410,6 +490,22 @@ class Store:
             self.db.execute("UPDATE companies SET all_categories=? WHERE listing_id=?",
                             (" | ".join(cats), lid))
             self.db.commit()
+
+    def upsert_company(self, c: Company, sector, category):
+        lid = listing_id(c.url)
+        row = self.db.execute(
+            "SELECT name, address, phone, email, website, sector, category FROM companies WHERE listing_id=?",
+            (lid,)).fetchone()
+        if not row:
+            return self.save_company(c, sector, category)
+        new = (c.name, c.address, " / ".join(c.phones), "; ".join(c.emails), c.website, sector, category)
+        merged = [o or n for o, n in zip(row, new)]
+        self.db.execute(
+            "UPDATE companies SET name=?, address=?, phone=?, email=?, website=?, sector=?, category=? "
+            "WHERE listing_id=?", (*merged, lid))
+        self.db.commit()
+        if category:
+            self.tag_category(lid, category)
 
     def save_company(self, c: Company, sector, category):
         self.db.execute(
@@ -540,7 +636,6 @@ def main(argv=None):
     c.add_argument("--delay", type=float, default=2.0, help="Giây nghỉ giữa 2 request (mặc định 2)")
     c.add_argument("--max-pages", type=int, default=500, help="Số trang tối đa mỗi phân ngành")
     c.add_argument("--max-companies", type=int, default=None, help="Dừng sau N công ty (để chạy thử)")
-    c.add_argument("--playwright", action="store_true", help="Dùng trình duyệt thật nếu bị chặn")
     c.add_argument("--rediscover", action="store_true", help="Quét lại danh sách phân ngành")
     c.add_argument("--db", default="trangvang.db")
     c.add_argument("--out", default=None, help="Xuất file ngay khi cào xong (.xlsx hoặc .csv)")
@@ -548,6 +643,12 @@ def main(argv=None):
     e = sub.add_parser("export", help="Xuất dữ liệu ra Excel/CSV")
     e.add_argument("--db", default="trangvang.db")
     e.add_argument("--out", default="cong_ty.xlsx")
+
+    i = sub.add_parser("import-html", help="Đọc các trang đã lưu bằng Ctrl+S rồi xuất Excel")
+    i.add_argument("--dir", default="trang_da_luu", help="Thư mục chứa file .html")
+    i.add_argument("--sector", default="", help="Tên lĩnh vực ghi vào cột Lĩnh vực (tùy chọn)")
+    i.add_argument("--db", default="trangvang.db")
+    i.add_argument("--out", default="cong_ty.xlsx")
 
     s = sub.add_parser("status", help="Xem tiến độ")
     s.add_argument("--db", default="trangvang.db")
@@ -567,7 +668,13 @@ def main(argv=None):
         print(f"Phân ngành: {d or 0}/{t} xong | Công ty đã cào: {n}")
         return
 
-    fetcher = Fetcher(delay=a.delay, use_playwright=a.playwright)
+    if a.cmd == "import-html":
+        n = import_html(store, a.dir, a.sector)
+        log.info("Đã đọc %d công ty từ %s", n, a.dir)
+        export(store, a.out)
+        return
+
+    fetcher = Fetcher(delay=a.delay)
     try:
         has_cats = store.db.execute("SELECT COUNT(*) FROM categories").fetchone()[0]
         if a.start_url and (a.rediscover or not has_cats):
@@ -577,6 +684,9 @@ def main(argv=None):
         crawl_categories(fetcher, store, a.max_pages, a.max_companies)
     except KeyboardInterrupt:
         log.info("Đã dừng. Chạy lại cùng lệnh để làm tiếp.")
+    except Blocked as b:
+        log.error("Website từ chối truy cập tự động (%s). Đã dừng để tránh bị khóa IP.", b)
+        log.error("Dùng cách khác: bookmarklet 'cai_dat_bookmarklet.html' hoặc lệnh 'import-html' (xem README).")
     finally:
         fetcher.close()
         if a.out:
